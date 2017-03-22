@@ -14,6 +14,8 @@ namespace Fun_Killerapp_S2
     {
         int customerid;
         Getinfo getinfo = new Getinfo();
+
+
         public Customer(int customderID)
         {
             InitializeComponent();
@@ -22,7 +24,17 @@ namespace Fun_Killerapp_S2
 
         private void Customer_Load(object sender, EventArgs e)
         {
+            lbproducts.Items.Clear();
             lnboggedinas.Text = "You're logged in as: " + getinfo.GetCustomername(customerid) + "";
+            getinfo.Getallproducts();
+            lbproducts.Items.AddRange(getinfo.Products.ToArray());      
+        }
+
+        private void tbsearch_TextChanged(object sender, EventArgs e)
+        {
+            lbproducts.Items.Clear();
+            getinfo.seachproducts(tbsearch.Text);
+            lbproducts.Items.AddRange(getinfo.Products.ToArray());
         }
     }
 }
