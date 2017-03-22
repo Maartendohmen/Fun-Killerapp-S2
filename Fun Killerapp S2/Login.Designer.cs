@@ -28,26 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbUsername = new System.Windows.Forms.TextBox();
+            this.tbPassword = new System.Windows.Forms.TextBox();
             this.lbusername = new System.Windows.Forms.Label();
             this.lbpassword = new System.Windows.Forms.Label();
             this.btnconfirm = new System.Windows.Forms.Button();
+            this.chbCrewmember = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
-            // textBox1
+            // tbUsername
             // 
-            this.textBox1.Location = new System.Drawing.Point(146, 48);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(226, 20);
-            this.textBox1.TabIndex = 0;
+            this.tbUsername.Location = new System.Drawing.Point(146, 48);
+            this.tbUsername.Name = "tbUsername";
+            this.tbUsername.Size = new System.Drawing.Size(226, 20);
+            this.tbUsername.TabIndex = 0;
             // 
-            // textBox2
+            // tbPassword
             // 
-            this.textBox2.Location = new System.Drawing.Point(146, 108);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(226, 20);
-            this.textBox2.TabIndex = 1;
+            this.tbPassword.Location = new System.Drawing.Point(146, 108);
+            this.tbPassword.Name = "tbPassword";
+            this.tbPassword.PasswordChar = '*';
+            this.tbPassword.Size = new System.Drawing.Size(226, 20);
+            this.tbPassword.TabIndex = 1;
             // 
             // lbusername
             // 
@@ -75,17 +77,29 @@
             this.btnconfirm.TabIndex = 4;
             this.btnconfirm.Text = "Confirm";
             this.btnconfirm.UseVisualStyleBackColor = true;
+            this.btnconfirm.Click += new System.EventHandler(this.btnconfirm_Click);
+            // 
+            // chbCrewmember
+            // 
+            this.chbCrewmember.AutoSize = true;
+            this.chbCrewmember.Location = new System.Drawing.Point(15, 185);
+            this.chbCrewmember.Name = "chbCrewmember";
+            this.chbCrewmember.Size = new System.Drawing.Size(87, 17);
+            this.chbCrewmember.TabIndex = 5;
+            this.chbCrewmember.Text = "Crewmember";
+            this.chbCrewmember.UseVisualStyleBackColor = true;
             // 
             // frmlogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(442, 223);
+            this.Controls.Add(this.chbCrewmember);
             this.Controls.Add(this.btnconfirm);
             this.Controls.Add(this.lbpassword);
             this.Controls.Add(this.lbusername);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbPassword);
+            this.Controls.Add(this.tbUsername);
             this.Name = "frmlogin";
             this.Text = "User-Login";
             this.ResumeLayout(false);
@@ -94,12 +108,12 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label lbusername;
         private System.Windows.Forms.Label lbpassword;
         private System.Windows.Forms.Button btnconfirm;
+        private System.Windows.Forms.CheckBox chbCrewmember;
+        private System.Windows.Forms.TextBox tbUsername;
+        private System.Windows.Forms.TextBox tbPassword;
     }
 }
 

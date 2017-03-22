@@ -10,13 +10,11 @@ using System.Windows.Forms;
 
 namespace Fun_Killerapp_S2
 {
-    public partial class frmlogin : Form
+    public partial class Crew : Form
     {
-        public frmlogin()
+        public Crew()
         {
             InitializeComponent();
         }
-
-
     }
 }
