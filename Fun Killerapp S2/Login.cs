@@ -13,7 +13,7 @@ namespace Fun_Killerapp_S2
 {
     public partial class frmlogin : Form
     {
-      Getinfo getinfo = new Getinfo();
+      GetUserInfo getinfo = new GetUserInfo();
       public int CrewmemberID;
       public int customerID;
 

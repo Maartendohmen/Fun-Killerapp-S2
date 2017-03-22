@@ -32,6 +32,7 @@
             this.lbproducts = new System.Windows.Forms.ListBox();
             this.lbSearch = new System.Windows.Forms.Label();
             this.tbsearch = new System.Windows.Forms.TextBox();
+            this.btnaddtocart = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lnboggedinas
@@ -68,11 +69,22 @@
             this.tbsearch.TabIndex = 3;
             this.tbsearch.TextChanged += new System.EventHandler(this.tbsearch_TextChanged);
             // 
+            // btnaddtocart
+            // 
+            this.btnaddtocart.Location = new System.Drawing.Point(479, 76);
+            this.btnaddtocart.Name = "btnaddtocart";
+            this.btnaddtocart.Size = new System.Drawing.Size(209, 26);
+            this.btnaddtocart.TabIndex = 4;
+            this.btnaddtocart.Text = "Add to cart";
+            this.btnaddtocart.UseVisualStyleBackColor = true;
+            this.btnaddtocart.Click += new System.EventHandler(this.btnaddtocart_Click);
+            // 
             // Customer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(721, 445);
+            this.Controls.Add(this.btnaddtocart);
             this.Controls.Add(this.tbsearch);
             this.Controls.Add(this.lbSearch);
             this.Controls.Add(this.lbproducts);
@@ -91,5 +103,6 @@
         private System.Windows.Forms.ListBox lbproducts;
         private System.Windows.Forms.Label lbSearch;
         private System.Windows.Forms.TextBox tbsearch;
+        private System.Windows.Forms.Button btnaddtocart;
     }
 }

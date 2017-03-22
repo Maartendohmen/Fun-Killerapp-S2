@@ -13,7 +13,9 @@ namespace Fun_Killerapp_S2
     public partial class Customer : Form
     {
         int customerid;
-        Getinfo getinfo = new Getinfo();
+        List<string> Cartproducts = new List<string>();
+        GetUserInfo getinfo = new GetUserInfo();
+        GetProductInfo getproductinfo = new GetProductInfo();
 
 
         public Customer(int customderID)
@@ -26,15 +28,24 @@ namespace Fun_Killerapp_S2
         {
             lbproducts.Items.Clear();
             lnboggedinas.Text = "You're logged in as: " + getinfo.GetCustomername(customerid) + "";
-            getinfo.Getallproducts();
-            lbproducts.Items.AddRange(getinfo.Products.ToArray());      
+            getproductinfo.Getallproducts();
+            lbproducts.Items.AddRange(getproductinfo.Products.ToArray());      
         }
 
         private void tbsearch_TextChanged(object sender, EventArgs e)
         {
             lbproducts.Items.Clear();
-            getinfo.seachproducts(tbsearch.Text);
-            lbproducts.Items.AddRange(getinfo.Products.ToArray());
+            getproductinfo.seachproducts(tbsearch.Text);
+            lbproducts.Items.AddRange(getproductinfo.Products.ToArray());
+        }
+
+        private void btnaddtocart_Click(object sender, EventArgs e)
+        {
+            string selecteditemandcatagory = lbproducts.SelectedItem.ToString();
+            string selectedcatagory = selecteditemandcatagory.Substring(selecteditemandcatagory.IndexOf("\t"));
+            string selecteditem = selecteditemandcatagory.Replace(selectedcatagory, "");
+           Cartproducts.Add(selecteditem);
+
         }
     }
 }
