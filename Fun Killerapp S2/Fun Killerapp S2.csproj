@@ -66,6 +66,7 @@
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="GetUserInfo.cs" />
+    <Compile Include="OrderInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Customer.resx">

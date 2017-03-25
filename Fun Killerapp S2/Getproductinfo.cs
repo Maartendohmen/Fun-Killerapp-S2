@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Fun_Killerapp_S2
 {
-    class GetProductInfo
+     class GetProductInfo
     {
         public List<string> Products = new List<string>();
         private SqlConnection conn = new SqlConnection(@"Data Source=MAARTEN-PC\SQLEXPRESS;Initial Catalog=Webshop;Integrated Security=True");

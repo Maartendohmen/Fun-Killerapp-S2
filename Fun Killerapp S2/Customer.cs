@@ -16,6 +16,7 @@ namespace Fun_Killerapp_S2
         List<string> Cartproducts = new List<string>();
         GetUserInfo getinfo = new GetUserInfo();
         GetProductInfo getproductinfo = new GetProductInfo();
+        OrderInfo orderinfo = new OrderInfo();
 
 
         public Customer(int customderID)
@@ -44,8 +45,21 @@ namespace Fun_Killerapp_S2
             string selecteditemandcatagory = lbproducts.SelectedItem.ToString();
             string selectedcatagory = selecteditemandcatagory.Substring(selecteditemandcatagory.IndexOf("\t"));
             string selecteditem = selecteditemandcatagory.Replace(selectedcatagory, "");
-           Cartproducts.Add(selecteditem);
+            Cartproducts.Add(selecteditem);
+            lbProductsincart.Text = Cartproducts.Count.ToString();
 
+
+        }
+
+        private void btnclearcart_Click(object sender, EventArgs e)
+        {
+            Cartproducts.Clear();
+            lbProductsincart.Text = Cartproducts.Count.ToString();
+        }
+
+        private void btnplaceorder_Click(object sender, EventArgs e)
+        {
+            orderinfo.Placeorder(customerid, DateTime.Today.ToString("yyyy / MM / dd"));
         }
     }
 }

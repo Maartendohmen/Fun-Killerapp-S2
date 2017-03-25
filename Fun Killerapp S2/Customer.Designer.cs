@@ -33,6 +33,10 @@
             this.lbSearch = new System.Windows.Forms.Label();
             this.tbsearch = new System.Windows.Forms.TextBox();
             this.btnaddtocart = new System.Windows.Forms.Button();
+            this.btnclearcart = new System.Windows.Forms.Button();
+            this.lbnumberofproducts = new System.Windows.Forms.Label();
+            this.lbProductsincart = new System.Windows.Forms.Label();
+            this.btnplaceorder = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lnboggedinas
@@ -79,11 +83,53 @@
             this.btnaddtocart.UseVisualStyleBackColor = true;
             this.btnaddtocart.Click += new System.EventHandler(this.btnaddtocart_Click);
             // 
+            // btnclearcart
+            // 
+            this.btnclearcart.Location = new System.Drawing.Point(479, 122);
+            this.btnclearcart.Name = "btnclearcart";
+            this.btnclearcart.Size = new System.Drawing.Size(209, 26);
+            this.btnclearcart.TabIndex = 5;
+            this.btnclearcart.Text = "Clear cart";
+            this.btnclearcart.UseVisualStyleBackColor = true;
+            this.btnclearcart.Click += new System.EventHandler(this.btnclearcart_Click);
+            // 
+            // lbnumberofproducts
+            // 
+            this.lbnumberofproducts.AutoSize = true;
+            this.lbnumberofproducts.Location = new System.Drawing.Point(39, 419);
+            this.lbnumberofproducts.Name = "lbnumberofproducts";
+            this.lbnumberofproducts.Size = new System.Drawing.Size(135, 13);
+            this.lbnumberofproducts.TabIndex = 6;
+            this.lbnumberofproducts.Text = "Number of products in cart:";
+            // 
+            // lbProductsincart
+            // 
+            this.lbProductsincart.AutoSize = true;
+            this.lbProductsincart.Location = new System.Drawing.Point(180, 419);
+            this.lbProductsincart.Name = "lbProductsincart";
+            this.lbProductsincart.Size = new System.Drawing.Size(13, 13);
+            this.lbProductsincart.TabIndex = 7;
+            this.lbProductsincart.Text = "0";
+            // 
+            // btnplaceorder
+            // 
+            this.btnplaceorder.Location = new System.Drawing.Point(479, 379);
+            this.btnplaceorder.Name = "btnplaceorder";
+            this.btnplaceorder.Size = new System.Drawing.Size(209, 26);
+            this.btnplaceorder.TabIndex = 8;
+            this.btnplaceorder.Text = "Place order";
+            this.btnplaceorder.UseVisualStyleBackColor = true;
+            this.btnplaceorder.Click += new System.EventHandler(this.btnplaceorder_Click);
+            // 
             // Customer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(721, 445);
+            this.Controls.Add(this.btnplaceorder);
+            this.Controls.Add(this.lbProductsincart);
+            this.Controls.Add(this.lbnumberofproducts);
+            this.Controls.Add(this.btnclearcart);
             this.Controls.Add(this.btnaddtocart);
             this.Controls.Add(this.tbsearch);
             this.Controls.Add(this.lbSearch);
@@ -104,5 +150,9 @@
         private System.Windows.Forms.Label lbSearch;
         private System.Windows.Forms.TextBox tbsearch;
         private System.Windows.Forms.Button btnaddtocart;
+        private System.Windows.Forms.Button btnclearcart;
+        private System.Windows.Forms.Label lbnumberofproducts;
+        private System.Windows.Forms.Label lbProductsincart;
+        private System.Windows.Forms.Button btnplaceorder;
     }
 }

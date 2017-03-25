@@ -13,7 +13,7 @@ namespace Fun_Killerapp_S2
 {
     public partial class frmlogin : Form
     {
-      GetUserInfo getinfo = new GetUserInfo();
+      GetUserInfo getuserinfo = new GetUserInfo();
       public int CrewmemberID;
       public int customerID;
 
@@ -29,12 +29,12 @@ namespace Fun_Killerapp_S2
             if (chbCrewmember.Checked == true)
             {
                 crewmember = true;
-                int CrewmemberID = getinfo.getID(crewmember, tbUsername.Text, tbPassword.Text);            
+                int CrewmemberID = getuserinfo.getID(crewmember, tbUsername.Text, tbPassword.Text);            
             }
             else
             {
                 crewmember = false;
-                int customerID = getinfo.getID(crewmember, tbUsername.Text, tbPassword.Text);
+                int customerID = getuserinfo.getID(crewmember, tbUsername.Text, tbPassword.Text);
                 confirmuser(customerID);
             }         
         }
