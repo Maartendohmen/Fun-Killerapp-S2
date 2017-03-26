@@ -58,7 +58,10 @@ namespace Fun_Killerapp_S2
                     string Status = reader.GetString(1);
                     DateTime date = reader.GetDateTime(2);
 
-                    orders.Add("OrderID=" + OrderID + "\t" + "\t" + "\t" + "Status=" + Status + "\t" + "\t" + "\t" + "Datetime=" + date);
+                    string orderswithfulltime = "OrderID=" + OrderID + "\t" + "\t" + "\t" + "Status=" + Status + "\t" + "\t" + "\t" + "Datetime=" + date;
+                    string orderswithout = orderswithfulltime.Replace("00:00:00", "");
+
+                    orders.Add(orderswithout);
                 }
             }
             conn.Close();

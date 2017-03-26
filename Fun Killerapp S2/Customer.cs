@@ -15,7 +15,7 @@ namespace Fun_Killerapp_S2
         int customerid;
         public List<string> Cartproducts = new List<string>();
         GetUserInfo getinfo = new GetUserInfo();
-        GetProductInfo getproductinfo = new GetProductInfo();
+        ProductInfo getproductinfo = new ProductInfo();
         OrderInfo orderinfo = new OrderInfo();
 
 
