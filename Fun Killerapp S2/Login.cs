@@ -26,40 +26,41 @@ namespace Fun_Killerapp_S2
 
         private void btnconfirm_Click(object sender, EventArgs e)
         {
-            if (chbCrewmember.Checked == true)
+            try
             {
-                crewmember = true;
-                int CrewmemberID = getuserinfo.getID(crewmember, tbUsername.Text, tbPassword.Text);            
+                if (chbCrewmember.Checked == true)
+                {
+                    crewmember = true;
+                    int CrewmemberID = getuserinfo.getID(crewmember, tbUsername.Text, tbPassword.Text);
+                    confirmcrew(CrewmemberID);
+                }
+                else
+                {
+                    crewmember = false;
+                    int customerID = getuserinfo.getID(crewmember, tbUsername.Text, tbPassword.Text);
+                    confirmuser(customerID);
+                }
             }
-            else
+            catch
             {
-                crewmember = false;
-                int customerID = getuserinfo.getID(crewmember, tbUsername.Text, tbPassword.Text);
-                confirmuser(customerID);
-            }         
+                MessageBox.Show("Sorry, somthing went wrong when logging in");
+            }      
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        public void confirmcrew(int crewID)
+        {
+            if (customerID == 10000000)
+            {
+                MessageBox.Show("Sorry, wrong username or password");
+                tbPassword.Text = "";
+            }
+            else
+            {
+                Crew crew = new Crew();
+                crew.Show();
+            }
+        }
 
         public void confirmuser(int customerID)
         {

@@ -13,7 +13,7 @@ namespace Fun_Killerapp_S2
     public partial class Customer : Form
     {
         int customerid;
-        List<string> Cartproducts = new List<string>();
+        public List<string> Cartproducts = new List<string>();
         GetUserInfo getinfo = new GetUserInfo();
         GetProductInfo getproductinfo = new GetProductInfo();
         OrderInfo orderinfo = new OrderInfo();
@@ -47,8 +47,6 @@ namespace Fun_Killerapp_S2
             string selecteditem = selecteditemandcatagory.Replace(selectedcatagory, "");
             Cartproducts.Add(selecteditem);
             lbProductsincart.Text = Cartproducts.Count.ToString();
-
-
         }
 
         private void btnclearcart_Click(object sender, EventArgs e)
@@ -59,7 +57,23 @@ namespace Fun_Killerapp_S2
 
         private void btnplaceorder_Click(object sender, EventArgs e)
         {
-            orderinfo.Placeorder(customerid, DateTime.Today.ToString("yyyy / MM / dd"));
+            int OrderID = orderinfo.Placeorder(customerid, DateTime.Today.ToString("yyyy / MM / dd"));
+            orderinfo.MakeOrderRegel(OrderID, Cartproducts);
+            MessageBox.Show("You're Order has been placed");
         }
+
+        private void btnShowcart_Click(object sender, EventArgs e)
+        {
+            lbproducts.Items.Clear();
+            lbproducts.Items.Add("The Products in you're car are:");
+            lbproducts.Items.Add("");
+
+            foreach (string product in Cartproducts)
+            {
+                lbproducts.Items.Add(product);
+            }
+        }
+
+
     }
 }

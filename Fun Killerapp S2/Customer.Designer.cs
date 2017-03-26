@@ -37,6 +37,7 @@
             this.lbnumberofproducts = new System.Windows.Forms.Label();
             this.lbProductsincart = new System.Windows.Forms.Label();
             this.btnplaceorder = new System.Windows.Forms.Button();
+            this.btnShowcart = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lnboggedinas
@@ -54,8 +55,7 @@
             this.lbproducts.Location = new System.Drawing.Point(39, 76);
             this.lbproducts.Name = "lbproducts";
             this.lbproducts.Size = new System.Drawing.Size(416, 329);
-            this.lbproducts.TabIndex = 1;
-            // 
+            this.lbproducts.TabIndex = 1;            // 
             // lbSearch
             // 
             this.lbSearch.AutoSize = true;
@@ -85,7 +85,7 @@
             // 
             // btnclearcart
             // 
-            this.btnclearcart.Location = new System.Drawing.Point(479, 122);
+            this.btnclearcart.Location = new System.Drawing.Point(479, 175);
             this.btnclearcart.Name = "btnclearcart";
             this.btnclearcart.Size = new System.Drawing.Size(209, 26);
             this.btnclearcart.TabIndex = 5;
@@ -121,11 +121,22 @@
             this.btnplaceorder.UseVisualStyleBackColor = true;
             this.btnplaceorder.Click += new System.EventHandler(this.btnplaceorder_Click);
             // 
+            // btnShowcart
+            // 
+            this.btnShowcart.Location = new System.Drawing.Point(479, 125);
+            this.btnShowcart.Name = "btnShowcart";
+            this.btnShowcart.Size = new System.Drawing.Size(209, 26);
+            this.btnShowcart.TabIndex = 9;
+            this.btnShowcart.Text = "Show Cart";
+            this.btnShowcart.UseVisualStyleBackColor = true;
+            this.btnShowcart.Click += new System.EventHandler(this.btnShowcart_Click);
+            // 
             // Customer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(721, 445);
+            this.Controls.Add(this.btnShowcart);
             this.Controls.Add(this.btnplaceorder);
             this.Controls.Add(this.lbProductsincart);
             this.Controls.Add(this.lbnumberofproducts);
@@ -154,5 +165,6 @@
         private System.Windows.Forms.Label lbnumberofproducts;
         private System.Windows.Forms.Label lbProductsincart;
         private System.Windows.Forms.Button btnplaceorder;
+        private System.Windows.Forms.Button btnShowcart;
     }
 }

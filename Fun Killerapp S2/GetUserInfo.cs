@@ -33,17 +33,25 @@ namespace Fun_Killerapp_S2
             {
                 conn.Open();
                 string query = "select Userm.CrewID from Userm where Userm.Emailadres = '" + username + "' and userm.Password = '" + password + "'";
-                SqlCommand getid = new SqlCommand(query, conn);
-
-                using (SqlDataReader reader = getid.ExecuteReader())
+                try
                 {
-                    while (reader.Read())
+                    SqlCommand getid = new SqlCommand(query, conn);
+
+                    using (SqlDataReader reader = getid.ExecuteReader())
                     {
-                        int idcrewmember = reader.GetInt32(0);
-                        return idcrewmember;
+                        while (reader.Read())
+                        {
+                            int idcrewmember = reader.GetInt32(0);
+                            return idcrewmember;
+                        }
                     }
                 }
-            }
+                catch
+                {
+                    return 10000000;//Error
+                }
+
+                }
             return 10000000; //error
         }
 
