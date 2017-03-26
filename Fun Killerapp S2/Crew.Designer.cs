@@ -32,6 +32,7 @@
             this.lbOrders = new System.Windows.Forms.ListBox();
             this.lbsuppliers = new System.Windows.Forms.ListBox();
             this.btnaddsupplier = new System.Windows.Forms.Button();
+            this.btnpriceupdate = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbproducts
@@ -68,11 +69,22 @@
             this.btnaddsupplier.UseVisualStyleBackColor = true;
             this.btnaddsupplier.Click += new System.EventHandler(this.btnaddsupplier_Click);
             // 
+            // btnpriceupdate
+            // 
+            this.btnpriceupdate.Location = new System.Drawing.Point(858, 301);
+            this.btnpriceupdate.Name = "btnpriceupdate";
+            this.btnpriceupdate.Size = new System.Drawing.Size(201, 32);
+            this.btnpriceupdate.TabIndex = 6;
+            this.btnpriceupdate.Text = "Update price";
+            this.btnpriceupdate.UseVisualStyleBackColor = true;
+            this.btnpriceupdate.Click += new System.EventHandler(this.btnpriceupdate_Click);
+            // 
             // Crew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1103, 517);
+            this.Controls.Add(this.btnpriceupdate);
             this.Controls.Add(this.btnaddsupplier);
             this.Controls.Add(this.lbsuppliers);
             this.Controls.Add(this.lbOrders);
@@ -90,5 +102,6 @@
         private System.Windows.Forms.ListBox lbOrders;
         private System.Windows.Forms.ListBox lbsuppliers;
         private System.Windows.Forms.Button btnaddsupplier;
+        private System.Windows.Forms.Button btnpriceupdate;
     }
 }

@@ -12,7 +12,7 @@ namespace Fun_Killerapp_S2
 {
     public partial class Crew : Form
     {
-        ProductInfo getproductinfo = new ProductInfo();
+        ProductInfo productinfo = new ProductInfo();
         OrderInfo orderinfo = new OrderInfo();
         SupplierInfo supplierinfo = new SupplierInfo();
         public Crew()
@@ -23,8 +23,8 @@ namespace Fun_Killerapp_S2
         private void Crew_Load(object sender, EventArgs e)
         {
             lbproducts.Items.Clear();
-            getproductinfo.Getallproducts();
-            lbproducts.Items.AddRange(getproductinfo.Products.ToArray());
+            productinfo.Getallproducts();
+            lbproducts.Items.AddRange(productinfo.Products.ToArray());
             orderinfo.Getorders();
             lbOrders.Items.AddRange(orderinfo.orders.ToArray());
             supplierinfo.Getallallsupliers();
@@ -39,6 +39,19 @@ namespace Fun_Killerapp_S2
             supplierinfo.Suppliers.Clear();
             supplierinfo.Getallallsupliers();
             lbsuppliers.Items.AddRange(supplierinfo.Suppliers.ToArray());
+        }
+
+        private void btnpriceupdate_Click(object sender, EventArgs e)
+        {
+            string currentselected = lbproducts.SelectedItem.ToString();
+            string notselectedproductname = currentselected.Substring(currentselected.IndexOf("\t"));
+            string result = currentselected.Replace(notselectedproductname, "");
+            Pricechange pricechange = new Pricechange(result);
+            pricechange.ShowDialog();
+            lbproducts.Items.Clear();
+            productinfo.Products.Clear();
+            productinfo.Getallproducts();
+            lbproducts.Items.AddRange(productinfo.Products.ToArray());
         }
     }
 }

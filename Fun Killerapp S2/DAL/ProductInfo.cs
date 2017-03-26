@@ -30,17 +30,17 @@ namespace Fun_Killerapp_S2
                     {
                         Products.Add(productname + "\t" + "\t" + "\t" + productcatagorie + "\t" + "\t" + "\t" + "€" + productprice.ToString() + "," + "-");
                     }
-                    else if (productname.Length > 10 && productcatagorie.ToString().Length >= 8)
+                    else if (productname.Length > 11 && productcatagorie.ToString().Length >= 8)
                     {
-                        Products.Add(productname + "\t" + "\t" + productcatagorie + "\t" + "\t" + "€" + productprice.ToString() + "," + "-");
+                        Products.Add(productname + "\t" + "\t" + "\t" + productcatagorie + "\t" + "\t" + "€" + productprice.ToString() + "," + "-");
                     }
                     else if (productname.Length < 10 && productcatagorie.ToString().Length >= 8)
                     {
                         Products.Add(productname + "\t" + "\t" + "\t" + productcatagorie + "\t" + "\t" + "€" + productprice.ToString() + "," + "-");
                     }
-                    else if (productname.Length > 10 && productcatagorie.ToString().Length < 8)
+                    else if (productname.Length > 9 && productcatagorie.ToString().Length < 8)
                     {
-                        Products.Add(productname + "\t" + "\t" + productcatagorie + "\t" + "\t" + "\t" + "€" + productprice.ToString() + "," + "-");
+                        Products.Add(productname + "\t" + "\t" + "\t" + productcatagorie + "\t" + "\t" + "\t" + "€" + productprice.ToString() + "," + "-");
                     }
 
                 }
@@ -65,21 +65,30 @@ namespace Fun_Killerapp_S2
                     {
                         Products.Add(productname + "\t" + "\t" + "\t" + productcatagorie + "\t" + "\t" + "\t" + "€" + productprice.ToString() + "," + "-");
                     }
-                    else if (productname.Length > 10 && productcatagorie.ToString().Length >= 8)
+                    else if (productname.Length > 11 && productcatagorie.ToString().Length >= 8)
                     {
-                        Products.Add(productname + "\t" + "\t" + productcatagorie + "\t" + "\t" + "€" + productprice.ToString() + "," + "-");
+                        Products.Add(productname + "\t" + "\t" + "\t" + productcatagorie + "\t" + "\t" + "€" + productprice.ToString() + "," + "-");
                     }
                     else if (productname.Length < 10 && productcatagorie.ToString().Length >= 8)
                     {
                         Products.Add(productname + "\t" + "\t" + "\t" + productcatagorie + "\t" + "\t" + "€" + productprice.ToString() + "," + "-");
                     }
-                    else if (productname.Length > 10 && productcatagorie.ToString().Length < 8)
+                    else if (productname.Length > 9 && productcatagorie.ToString().Length < 8)
                     {
-                        Products.Add(productname + "\t" + "\t" + productcatagorie + "\t" + "\t" + "\t" + "€" + productprice.ToString() + "," + "-");
+                        Products.Add(productname + "\t" + "\t" + "\t" + productcatagorie + "\t" + "\t" + "\t" + "€" + productprice.ToString() + "," + "-");
                     }
                 }
             }
             conn.Close();
+        }
+
+        public void updateprice(string productname, decimal newprice)
+        {
+            conn.Open();
+            string queryupdateprice = "update Product SET Price = " + newprice + " WHERE Name = '" + productname + "' ;";
+            SqlCommand updatprice = new SqlCommand(queryupdateprice, conn);
+            updatprice.BeginExecuteNonQuery();
+            conn.Close();          
         }
 
     }
