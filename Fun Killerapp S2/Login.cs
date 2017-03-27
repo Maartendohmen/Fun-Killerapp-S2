@@ -50,7 +50,7 @@ namespace Fun_Killerapp_S2
 
         public void confirmcrew(int crewID)
         {
-            if (customerID == 10000000)
+            if (crewID == 10000000)
             {
                 MessageBox.Show("Sorry, wrong username or password");
                 tbPassword.Text = "";
