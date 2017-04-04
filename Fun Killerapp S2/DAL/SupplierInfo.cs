@@ -37,7 +37,7 @@ namespace Fun_Killerapp_S2
             conn.Open();
             string queryaddsupplier = "insert into Supplier(Name, Location) values('" + name + "', '" + location + "'); ";
             SqlCommand addsuplier = new SqlCommand(queryaddsupplier, conn);
-            addsuplier.BeginExecuteNonQuery();
+            addsuplier.ExecuteNonQuery();
             conn.Close();
         }
 

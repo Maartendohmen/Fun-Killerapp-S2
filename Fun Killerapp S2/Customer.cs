@@ -12,12 +12,9 @@ namespace Fun_Killerapp_S2
 {
     public partial class Customer : Form
     {
+        CustomerOverview customeroverview = new CustomerOverview();
         int customerid;
         public List<string> Cartproducts = new List<string>();
-        GetUserInfo getinfo = new GetUserInfo();
-        ProductInfo getproductinfo = new ProductInfo();
-        OrderInfo orderinfo = new OrderInfo();
-
 
         public Customer(int customderID)
         {
@@ -28,16 +25,14 @@ namespace Fun_Killerapp_S2
         private void Customer_Load(object sender, EventArgs e)
         {
             lbproducts.Items.Clear();
-            lnboggedinas.Text = "You're logged in as: " + getinfo.GetCustomername(customerid) + "";
-            getproductinfo.Getallproducts();
-            lbproducts.Items.AddRange(getproductinfo.Products.ToArray());      
+            lnboggedinas.Text = customeroverview.Getnaam(customerid);
+            lbproducts.Items.AddRange(customeroverview.loadproducts());     
         }
 
         private void tbsearch_TextChanged(object sender, EventArgs e)
         {
             lbproducts.Items.Clear();
-            getproductinfo.seachproducts(tbsearch.Text);
-            lbproducts.Items.AddRange(getproductinfo.Products.ToArray());
+            lbproducts.Items.AddRange(customeroverview.searchproducts(tbsearch.Text));
         }
 
         private void btnaddtocart_Click(object sender, EventArgs e)
@@ -57,8 +52,7 @@ namespace Fun_Killerapp_S2
 
         private void btnplaceorder_Click(object sender, EventArgs e)
         {
-            int OrderID = orderinfo.Placeorder(customerid, DateTime.Today.ToString("yyyy / MM / dd"));
-            orderinfo.MakeOrderRegel(OrderID, Cartproducts);
+            customeroverview.placeorder(customerid, Cartproducts);
             MessageBox.Show("You're Order has been placed");
         }
 

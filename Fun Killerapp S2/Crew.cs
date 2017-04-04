@@ -12,23 +12,18 @@ namespace Fun_Killerapp_S2
 {
     public partial class Crew : Form
     {
-        ProductInfo productinfo = new ProductInfo();
-        OrderInfo orderinfo = new OrderInfo();
-        SupplierInfo supplierinfo = new SupplierInfo();
+        CrewOverview crewoverview = new CrewOverview();
         public Crew()
         {
-            InitializeComponent();
+            InitializeComponent();          
         }
 
         private void Crew_Load(object sender, EventArgs e)
         {
-            lbproducts.Items.Clear();
-            productinfo.Getallproducts();
-            lbproducts.Items.AddRange(productinfo.Products.ToArray());
-            orderinfo.Getorders();
-            lbOrders.Items.AddRange(orderinfo.orders.ToArray());
-            supplierinfo.Getallallsupliers();
-            lbsuppliers.Items.AddRange(supplierinfo.Suppliers.ToArray());   
+            lbproducts.Items.Clear();           
+            lbproducts.Items.AddRange(crewoverview.loadproducts());            
+            lbOrders.Items.AddRange(crewoverview.loadorders());            
+            lbsuppliers.Items.AddRange(crewoverview.loadsuppliers());   
         }
 
         private void btnaddsupplier_Click(object sender, EventArgs e)
@@ -36,9 +31,8 @@ namespace Fun_Killerapp_S2
             Supplierinput supplierinput = new Supplierinput();
             supplierinput.ShowDialog();
             lbsuppliers.Items.Clear();
-            supplierinfo.Suppliers.Clear();
-            supplierinfo.Getallallsupliers();
-            lbsuppliers.Items.AddRange(supplierinfo.Suppliers.ToArray());
+            crewoverview.clearsupplierslist();
+            lbsuppliers.Items.AddRange(crewoverview.loadsuppliers());
         }
 
         private void btnpriceupdate_Click(object sender, EventArgs e)
@@ -49,9 +43,8 @@ namespace Fun_Killerapp_S2
             Pricechange pricechange = new Pricechange(result);
             pricechange.ShowDialog();
             lbproducts.Items.Clear();
-            productinfo.Products.Clear();
-            productinfo.Getallproducts();
-            lbproducts.Items.AddRange(productinfo.Products.ToArray());
+            crewoverview.clearproductlist();
+            lbproducts.Items.AddRange(crewoverview.loadproducts());
         }
     }
 }

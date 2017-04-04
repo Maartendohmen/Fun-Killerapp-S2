@@ -87,7 +87,7 @@ namespace Fun_Killerapp_S2
             conn.Open();
             string queryupdateprice = "update Product SET Price = " + newprice + " WHERE Name = '" + productname + "' ;";
             SqlCommand updatprice = new SqlCommand(queryupdateprice, conn);
-            updatprice.BeginExecuteNonQuery();
+            updatprice.ExecuteNonQuery();
             conn.Close();          
         }
 

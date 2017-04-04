@@ -52,17 +52,19 @@
     <Compile Include="Crew.Designer.cs">
       <DependentUpon>Crew.cs</DependentUpon>
     </Compile>
+    <Compile Include="Business Logic\CrewOverview.cs" />
     <Compile Include="Customer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Customer.Designer.cs">
       <DependentUpon>Customer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Business Logic\CustomerOverview.cs" />
     <Compile Include="DAL\ProductInfo.cs" />
-    <Compile Include="Login.cs">
+    <Compile Include="UI Input screens\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.cs">
+    <Compile Include="UI Input screens\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="DAL\UserInfo.cs" />
@@ -88,7 +90,7 @@
     <EmbeddedResource Include="Customer.resx">
       <DependentUpon>Customer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
+    <EmbeddedResource Include="UI Input screens\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI Input screens\Pricechange.resx">
