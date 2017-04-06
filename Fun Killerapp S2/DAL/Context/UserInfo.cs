@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fun_Killerapp_S2.DAL.Interface;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -7,34 +8,34 @@ using System.Threading.Tasks;
 
 namespace Fun_Killerapp_S2
 {
-    class GetUserInfo
+    class GetUserInfo : IUserInfo
     {
         private SqlConnection conn = new SqlConnection(@"Data Source=MAARTEN-PC\SQLEXPRESS;Initial Catalog=Webshop;Integrated Security=True");
+        public string error;
 
         public int getID(bool crewmember, string username, string password)
         {
             conn.Close();
             if (crewmember == false)
             {
-                conn.Open();
-                string query = "select Userm.CustomerID from Userm where Userm.Emailadres = '"+username+"' and userm.Password = '"+password+"'";
-                SqlCommand getid = new SqlCommand(query, conn);
+                    conn.Open();
+                    string query = "select [User].CustomerID from [User] where [User].Emailadres = '" + username + "' and [User].Password = '" + password + "'";
+                    SqlCommand getid = new SqlCommand(query, conn);
 
-                using (SqlDataReader reader = getid.ExecuteReader())
-                {
-                    while (reader.Read())
+                    using (SqlDataReader reader = getid.ExecuteReader())
                     {
-                        int idcustomer = reader.GetInt32(0);
-                        return idcustomer;
+                        while (reader.Read())
+                        {
+                            int idcustomer = reader.GetInt32(0);
+                            return idcustomer;
+                        }
                     }
-                }
             }
+            
             else
             {
                 conn.Open();
-                string query = "select Userm.CrewID from Userm where Userm.Emailadres = '" + username + "' and userm.Password = '" + password + "'";
-                try
-                {
+                string query = "select [User].CrewID from [User] where [User].Emailadres = '" + username + "' and [User].Password = '" + password + "'";
                     SqlCommand getid = new SqlCommand(query, conn);
 
                     using (SqlDataReader reader = getid.ExecuteReader())
@@ -45,14 +46,8 @@ namespace Fun_Killerapp_S2
                             return idcrewmember;
                         }
                     }
-                }
-                catch
-                {
-                    return 10000000;//Error
-                }
-
-                }
-            return 10000000; //error
+                }               
+            return -1; //error
         }
 
 

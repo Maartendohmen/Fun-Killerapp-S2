@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fun_Killerapp_S2.DAL.Interface;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Fun_Killerapp_S2
 {
-     class ProductInfo
+     class ProductInfo : IProductInfo 
     {
         public List<string> Products = new List<string>();
         private SqlConnection conn = new SqlConnection(@"Data Source=MAARTEN-PC\SQLEXPRESS;Initial Catalog=Webshop;Integrated Security=True");

@@ -1,13 +1,14 @@
-﻿using System;
+﻿using Fun_Killerapp_S2.DAL.Interface;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fun_Killerapp_S2
+namespace Fun_Killerapp_S2 
 {
-    class OrderInfo
+    class OrderInfo : IOrderInfo
     {
         private SqlConnection conn = new SqlConnection(@"Data Source=MAARTEN-PC\SQLEXPRESS;Initial Catalog=Webshop;Integrated Security=True");
         public List<string> orders = new List<string>();
@@ -15,7 +16,7 @@ namespace Fun_Killerapp_S2
         public int Placeorder(int customerid, string placedate)
         {
             conn.Open();
-            string querryplaceorder = "insert into Orderm (CustomerID,Date,Status) OUTPUT Inserted.OrderID values('" + customerid + "','" + placedate + "','ordered');";
+            string querryplaceorder = "insert into [Order] (CustomerID,Date,Status) OUTPUT Inserted.OrderID values('" + customerid + "','" + placedate + "','ordered');";
             SqlCommand placeorder = new SqlCommand(querryplaceorder, conn);
             int lastmadeID = (int)placeorder.ExecuteScalar();
             conn.Close();
@@ -62,7 +63,7 @@ namespace Fun_Killerapp_S2
         public void Getorders()
         {
             conn.Open();
-            string querygetorders = "select OrderID,Status,Date from Orderm;";
+            string querygetorders = "select OrderID,Status,Date from [Order];";
             SqlCommand getorders = new SqlCommand(querygetorders, conn);
 
             using (SqlDataReader reader = getorders.ExecuteReader())
