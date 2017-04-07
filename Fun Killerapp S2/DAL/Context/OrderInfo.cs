@@ -1,4 +1,5 @@
-﻿using Fun_Killerapp_S2.DAL.Interface;
+﻿using Fun_Killerapp_S2.DAL;
+using Fun_Killerapp_S2.DAL.Interface;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -8,9 +9,8 @@ using System.Threading.Tasks;
 
 namespace Fun_Killerapp_S2 
 {
-    class OrderInfo : IOrderInfo
+    class OrderInfo : Connectionstring,IOrderInfo
     {
-        private SqlConnection conn = new SqlConnection(@"Data Source=MAARTEN-PC\SQLEXPRESS;Initial Catalog=Webshop;Integrated Security=True");
         public List<string> orders = new List<string>();
         List<int> Productsincart = new List<int>();
         public int Placeorder(int customerid, string placedate)
@@ -45,8 +45,6 @@ namespace Fun_Killerapp_S2
 
             foreach (int productID in Productsincart)
             {
-                conn.Close();
-                conn.Open();
                 string queryAddorderregel = "insert into Orderregel(OrderID,ProductID) values ('" + OrderID + "','" + productID + "');";
                 SqlCommand querryAddorderregel = new SqlCommand(queryAddorderregel, conn);
                 querryAddorderregel.ExecuteNonQuery();

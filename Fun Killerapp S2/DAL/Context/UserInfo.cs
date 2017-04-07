@@ -1,4 +1,5 @@
-﻿using Fun_Killerapp_S2.DAL.Interface;
+﻿using Fun_Killerapp_S2.DAL;
+using Fun_Killerapp_S2.DAL.Interface;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -8,10 +9,8 @@ using System.Threading.Tasks;
 
 namespace Fun_Killerapp_S2
 {
-    class GetUserInfo : IUserInfo
+    class GetUserInfo : Connectionstring, IUserInfo
     {
-        private SqlConnection conn = new SqlConnection(@"Data Source=MAARTEN-PC\SQLEXPRESS;Initial Catalog=Webshop;Integrated Security=True");
-        public string error;
 
         public int getID(bool crewmember, string username, string password)
         {

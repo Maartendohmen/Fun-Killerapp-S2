@@ -60,6 +60,7 @@
       <DependentUpon>Customer.cs</DependentUpon>
     </Compile>
     <Compile Include="Business Logic\CustomerOverview.cs" />
+    <Compile Include="DAL\Connectionstring.cs" />
     <Compile Include="DAL\Context\ProductInfo.cs" />
     <Compile Include="DAL\Interface\IOrderInfo.cs" />
     <Compile Include="DAL\Interface\IProductInfo.cs" />
