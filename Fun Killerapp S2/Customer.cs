@@ -66,6 +66,9 @@ namespace Fun_Killerapp_S2
             {
                 lbproducts.Items.Add(product);
             }
+
+            lbproducts.Items.Add("");
+            lbproducts.Items.Add("Your total price is = " + customeroverview.Gettotalprice(Cartproducts));
         }
 
 

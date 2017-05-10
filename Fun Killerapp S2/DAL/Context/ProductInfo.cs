@@ -85,11 +85,41 @@ namespace Fun_Killerapp_S2
         public void updateprice(string productname, decimal newprice)
         {
             conn.Open();
-            string queryupdateprice = "update Product SET Price = " + newprice + " WHERE Name = '" + productname + "' ;";
+            string queryupdateprice = "update Product SET Price = @newprice WHERE Name = @productname ;";
             SqlCommand updatprice = new SqlCommand(queryupdateprice, conn);
+            updatprice.Parameters.AddWithValue("newprice", newprice);
+            updatprice.Parameters.AddWithValue("productname", productname);
             updatprice.ExecuteNonQuery();
             conn.Close();          
         }
 
+        public int totalprice(List<string> products)
+        {
+            conn.Open();
+            int totalprice = 0;
+            foreach (string product in products)
+            {               
+                string queryPrice = "select Price,DiscountID from Product Where Name = @naam;";
+                SqlCommand getprice = new SqlCommand(queryPrice, conn);
+                getprice.Parameters.AddWithValue("naam", product);
+
+                using (SqlDataReader reader = getprice.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        if (reader["DiscountID"] == DBNull.Value)
+                        {
+                            totalprice = totalprice + Convert.ToInt32(reader["Price"]);
+                        }
+                        else
+                        {
+                            return -1;
+                        }
+                    }
+                }
+            }
+            conn.Close();
+            return totalprice;
+        }
     }
 }

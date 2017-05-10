@@ -2,6 +2,7 @@
 using Fun_Killerapp_S2.DAL.Interface;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -12,40 +13,35 @@ namespace Fun_Killerapp_S2
     class OrderInfo : Connectionstring,IOrderInfo
     {
         public List<string> orders = new List<string>();
-        List<int> Productsincart = new List<int>();
-        public int Placeorder(int customerid, string placedate)
+        public void Placeorder(int customerid, string placedate, List<string> Cartproducts)
         {
+            
             conn.Open();
 
-            SqlCommand placeorder = new SqlCommand("Placeorder",conn);
+            DataTable Producten = new DataTable();
+            Producten.Columns.Add("Producten naam",typeof (string));
+            Producten.Columns.Add("ProductID", typeof(int));
+            int ProductID = 0;
+
+            foreach(string product in Cartproducts)
+            {
+                Producten.Rows.Add(product,ProductID);
+                ProductID++;
+                Console.WriteLine(Producten.Rows[0].Field<string>(0));
+            }
+
+            SqlCommand placeorder = new SqlCommand("TestProcedure",conn);
             placeorder.CommandType = System.Data.CommandType.StoredProcedure;
             placeorder.Parameters.AddWithValue("id", customerid);
             placeorder.Parameters.AddWithValue("placedate", placedate);
-
+            SqlParameter Productenparameter = placeorder.Parameters.AddWithValue("@List", Producten);
+            Productenparameter.SqlDbType = SqlDbType.Structured;
+            placeorder.Parameters.AddWithValue("productinCart", Cartproducts.Count);
+            
             placeorder.ExecuteNonQuery();
-
-            int lastmadeID = (int)placeorder.ExecuteScalar();
-            conn.Close();
-            return lastmadeID;
-        }
-
-        public void MakeOrderRegel(int OrderID, List<string> products)
-        {
-            conn.Open();
-
-            SqlCommand makeorderregel = new SqlCommand("Makeorderregel",conn);
-            makeorderregel.CommandType = System.Data.CommandType.StoredProcedure;
-
-            foreach (string product in products)
-            {
-                makeorderregel.Parameters.AddWithValue("productname", product);
-                makeorderregel.Parameters.AddWithValue("orderid", OrderID);                
-                makeorderregel.ExecuteNonQuery();
-                makeorderregel.Parameters.Clear();
-            }
-
             conn.Close();
         }
+
 
         public void Getorders()
         {
