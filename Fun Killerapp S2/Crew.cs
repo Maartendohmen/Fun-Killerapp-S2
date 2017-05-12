@@ -37,14 +37,21 @@ namespace Fun_Killerapp_S2
 
         private void btnpriceupdate_Click(object sender, EventArgs e)
         {
-            string currentselected = lbproducts.SelectedItem.ToString();
-            string notselectedproductname = currentselected.Substring(currentselected.IndexOf("\t"));
-            string result = currentselected.Replace(notselectedproductname, "");
-            Pricechange pricechange = new Pricechange(result);
-            pricechange.ShowDialog();
-            lbproducts.Items.Clear();
-            crewoverview.clearproductlist();
-            lbproducts.Items.AddRange(crewoverview.loadproducts());
+            try
+            {
+                string currentselected = lbproducts.SelectedItem.ToString();
+                string notselectedproductname = currentselected.Substring(currentselected.IndexOf("\t"));
+                string result = currentselected.Replace(notselectedproductname, "");
+                Pricechange pricechange = new Pricechange(result);
+                pricechange.ShowDialog();
+                lbproducts.Items.Clear();
+                crewoverview.clearproductlist();
+                lbproducts.Items.AddRange(crewoverview.loadproducts());
+            }
+            catch
+            {
+                MessageBox.Show("Please select a product to update the price");
+            }
         }
     }
 }
