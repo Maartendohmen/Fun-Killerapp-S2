@@ -8,6 +8,7 @@ namespace Fun_Killerapp_S2.DAL.Interface
 {
     interface IOrderInfo
     {
-        void Placeorder(int customerid, string placedate,List<string> Cartproducts);    
+        int Placeorder(int customerid, string placedate);
+        void MakeOrderRegel(int OrderID, List<string> products);       
     }
 }

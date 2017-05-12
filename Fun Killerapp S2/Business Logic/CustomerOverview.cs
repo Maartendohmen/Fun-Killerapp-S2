@@ -37,13 +37,8 @@ namespace Fun_Killerapp_S2
 
         public void placeorder(int customerid, List<string> cartproducts)
         {
-            orderinfo.Placeorder(customerid, DateTime.Today.ToString("yyyy / MM / dd"), cartproducts);
-        }
-
-        public int Gettotalprice(List<string> cartproducts)
-        {
-           int totalprice = productinfo.totalprice(cartproducts);
-           return totalprice;
+            int OrderID = orderinfo.Placeorder(customerid, DateTime.Today.ToString("yyyy / MM / dd"));
+            orderinfo.MakeOrderRegel(OrderID, cartproducts);
         }
     }
 }
