@@ -11,6 +11,13 @@ namespace Fun_Killerapp_S2
 {
     class OrderInfo : Connectionstring,IOrderInfo
     {
+
+        public List<object> GetAll()
+        {
+
+        }
+
+
         public List<string> orders = new List<string>();
         List<int> Productsincart = new List<int>();
         public int Placeorder(int customerid, string placedate)

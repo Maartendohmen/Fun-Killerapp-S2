@@ -11,6 +11,22 @@ namespace Fun_Killerapp_S2
 {
      class ProductInfo : Connectionstring, IProductInfo 
     {
+        public List<object> GetAll()
+        {
+            List<Product> products = new List<Product>();
+
+            string querygetallproducts = "SELECT ProductID, SupplierID, DiscountID, Price,Name,Catagorie,Amount FROM Product";
+            SqlCommand Getallproducts = new SqlCommand(querygetallproducts, conn);
+
+            using (SqlDataReader reader = Getallproducts.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    products.Add(new Product(Convert.ToInt32(reader["ProductID"]), )
+                }
+            }
+        }
+
         public List<string> Products = new List<string>();
 
         public void Getallproducts()

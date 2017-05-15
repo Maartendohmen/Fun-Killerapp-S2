@@ -66,6 +66,14 @@
     <Compile Include="DAL\Interface\IProductInfo.cs" />
     <Compile Include="DAL\Interface\ISupplierInfo.cs" />
     <Compile Include="DAL\Interface\IUserInfo.cs" />
+    <Compile Include="Object\Crew.cs" />
+    <Compile Include="Object\Discount.cs" />
+    <Compile Include="Object\Enum\OrderStatus.cs" />
+    <Compile Include="Object\Enum\ProductCatagorie.cs" />
+    <Compile Include="Object\Orders.cs" />
+    <Compile Include="Object\Product.cs" />
+    <Compile Include="Object\Supplier.cs" />
+    <Compile Include="Object\Customer.cs" />
     <Compile Include="UI Input screens\Login.cs">
       <SubType>Form</SubType>
     </Compile>
