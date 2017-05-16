@@ -12,7 +12,7 @@ namespace Fun_Killerapp_S2
     {
         private int productid;
         private Supplier supplier;
-        private Discount discount;
+        private List<Discount> discount;
         private decimal price;
         private string name;
         private ProductCatagorie.Productsoort productsoort;
@@ -30,7 +30,7 @@ namespace Fun_Killerapp_S2
             private set { supplier = value; }
         }
 
-        public Discount Discount
+        public List<Discount> Discount
         {
             get { return discount; }
             private set { discount = value; }
@@ -60,7 +60,7 @@ namespace Fun_Killerapp_S2
             private set { amount = value; }
         }
 
-        public Product(int productid, Supplier supplier,Discount discount,decimal price,string name, ProductCatagorie.Productsoort productsoort, int amount)
+        public Product(int productid, Supplier supplier, List<Discount> discount,decimal price,string name, ProductCatagorie.Productsoort productsoort, int amount)
         {
             this.productid = productid;
             this.supplier = supplier;

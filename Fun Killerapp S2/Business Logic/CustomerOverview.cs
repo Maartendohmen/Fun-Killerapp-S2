@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Fun_Killerapp_S2.DAL.Context;
+using Fun_Killerapp_S2.Object;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,37 +10,26 @@ namespace Fun_Killerapp_S2
 {
     class CustomerOverview
     {
-        ProductInfo productinfo = new ProductInfo();
-        OrderInfo orderinfo = new OrderInfo();
-        SupplierInfo supplierinfo = new SupplierInfo();
-        GetUserInfo userinfo = new GetUserInfo();
+        OrderContext ordercontext = new OrderContext();
+        ProductContext productcontext = new ProductContext();
+        SupplierContext suppliercontext = new SupplierContext();
+        UserContext usercontext = new UserContext();
+        CustomerContext customercontext = new CustomerContext();
 
-
-        public string Getnaam(int customerid)
+        public object GetCurrentUser(string emailadres, string password)
         {
-           string naam = "You're logged in as: " + userinfo.GetCustomername(customerid) + "";
-           return naam;
+            User currentuser = (User)usercontext.GetOne(emailadres, password);
+            
+            if (currentuser.CustomerID != -1)
+            {
+                return customercontext.GetOne(currentuser.CustomerID);
+            }
+            else
+            {
+                return null;
+            }
         }
 
-        public string[] loadproducts()
-        {
-            productinfo.Getallproducts();
-            string[] allproducts = productinfo.Products.ToArray();
-            return allproducts;
-        }
-
-        public string[] searchproducts(string searchtext)
-        {
-            productinfo.Products.Clear();
-            productinfo.seachproducts(searchtext);
-            string[] searchedproducts = productinfo.Products.ToArray();
-            return searchedproducts;
-        }
-
-        public void placeorder(int customerid, List<string> cartproducts)
-        {
-            int OrderID = orderinfo.Placeorder(customerid, DateTime.Today.ToString("yyyy / MM / dd"));
-            orderinfo.MakeOrderRegel(OrderID, cartproducts);
-        }
+        
     }
 }

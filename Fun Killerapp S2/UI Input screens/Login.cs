@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fun_Killerapp_S2.Object;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,11 +14,8 @@ namespace Fun_Killerapp_S2
 {
     public partial class frmlogin : Form
     {
-      GetUserInfo getuserinfo = new GetUserInfo();
-      public int CrewmemberID;
-      public int customerID;
-
-       public bool crewmember = false;
+        CustomerOverview customeroverview = new CustomerOverview();
+        CrewOverview crewoverview = new CrewOverview();
 
         public frmlogin()
         {
@@ -26,54 +24,20 @@ namespace Fun_Killerapp_S2
 
         private void btnconfirm_Click(object sender, EventArgs e)
         {
-            try
+            object type_user = customeroverview.GetCurrentUser(tbUsername.Text, tbPassword.Text);
+            if (type_user is Customer)
             {
-                if (chbCrewmember.Checked == true)
-                {
-                    crewmember = true;
-                    int CrewmemberID = getuserinfo.getID(crewmember, tbUsername.Text, tbPassword.Text);
-                    confirmcrew(CrewmemberID);
-                }
-                else
-                {
-                    crewmember = false;
-                    int customerID = getuserinfo.getID(crewmember, tbUsername.Text, tbPassword.Text);
-                    confirmuser(customerID);
-                }
+                CustomerForm customerform = new CustomerForm(type_user);
+                customerform.Show();
+                this.Hide();
             }
-            catch
+            else if (type_user is Crew)
             {
-                MessageBox.Show("Sorry, somthing went wrong when logging in");
-            }      
-        }
+                CrewForm crewform = new CrewForm(type_user);
+                crewform.Show();
+                this.Hide();
+            }
 
-
-        public void confirmcrew(int crewID)
-        {
-            if (crewID == -1)
-            {
-                MessageBox.Show("Sorry, wrong username or password");
-                tbPassword.Text = "";
-            }
-            else
-            {
-                Crew crew = new Crew();
-                crew.Show();
-            }
-        }
-
-        public void confirmuser(int customerID)
-        {
-            if (customerID == -1)
-            {
-                MessageBox.Show("Sorry, wrong username or password");
-                tbPassword.Text = "";
-            }
-            else
-            {
-                Customer customer = new Customer(customerID);
-                customer.Show();
-            }
         }
 
     }

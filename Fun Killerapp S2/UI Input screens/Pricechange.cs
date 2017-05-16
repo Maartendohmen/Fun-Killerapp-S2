@@ -13,7 +13,7 @@ namespace Fun_Killerapp_S2
     public partial class Pricechange : Form
     {
         string productname;
-        ProductInfo productinfo = new ProductInfo();
+        ProductContext productinfo = new ProductContext();
         public Pricechange(string Productname)
         {
             InitializeComponent();
@@ -32,9 +32,7 @@ namespace Fun_Killerapp_S2
 
         private void btnconfirm_Click(object sender, EventArgs e)
         {
-            decimal newprice = Convert.ToDecimal(tbinputpricechange.Text);
-            productinfo.updateprice(productname, newprice);
-            this.Close();
+
         }
     }
 }

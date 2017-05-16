@@ -46,42 +46,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Crew.cs">
+    <Compile Include="CrewForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Crew.Designer.cs">
-      <DependentUpon>Crew.cs</DependentUpon>
+    <Compile Include="CrewForm.Designer.cs">
+      <DependentUpon>CrewForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Business Logic\CrewOverview.cs" />
-    <Compile Include="Customer.cs">
+    <Compile Include="CustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Customer.Designer.cs">
-      <DependentUpon>Customer.cs</DependentUpon>
+    <Compile Include="CustomerForm.Designer.cs">
+      <DependentUpon>CustomerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Business Logic\CustomerOverview.cs" />
     <Compile Include="DAL\Connectionstring.cs" />
-    <Compile Include="DAL\Context\ProductInfo.cs" />
-    <Compile Include="DAL\Interface\IOrderInfo.cs" />
-    <Compile Include="DAL\Interface\IProductInfo.cs" />
-    <Compile Include="DAL\Interface\ISupplierInfo.cs" />
-    <Compile Include="DAL\Interface\IUserInfo.cs" />
+    <Compile Include="DAL\Context\CustomerContext.cs" />
+    <Compile Include="DAL\Context\ProductContext.cs" />
+    <Compile Include="DAL\Interface\Main.cs" />
     <Compile Include="Object\Crew.cs" />
     <Compile Include="Object\Discount.cs" />
     <Compile Include="Object\Enum\OrderStatus.cs" />
     <Compile Include="Object\Enum\ProductCatagorie.cs" />
-    <Compile Include="Object\Orders.cs" />
+    <Compile Include="Object\Order.cs" />
     <Compile Include="Object\Product.cs" />
     <Compile Include="Object\Supplier.cs" />
     <Compile Include="Object\Customer.cs" />
+    <Compile Include="Object\User.cs" />
     <Compile Include="UI Input screens\Login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI Input screens\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="DAL\Context\UserInfo.cs" />
-    <Compile Include="DAL\Context\OrderInfo.cs" />
+    <Compile Include="DAL\Context\UserContext.cs" />
+    <Compile Include="DAL\Context\OrderContext.cs" />
     <Compile Include="UI Input screens\Pricechange.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,18 +89,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DAL\Context\SupplierInfo.cs" />
+    <Compile Include="DAL\Context\SupplierContext.cs" />
     <Compile Include="UI Input screens\Supplierinput.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI Input screens\Supplierinput.Designer.cs">
       <DependentUpon>Supplierinput.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Crew.resx">
-      <DependentUpon>Crew.cs</DependentUpon>
+    <EmbeddedResource Include="CrewForm.resx">
+      <DependentUpon>CrewForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Customer.resx">
-      <DependentUpon>Customer.cs</DependentUpon>
+    <EmbeddedResource Include="CustomerForm.resx">
+      <DependentUpon>CustomerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI Input screens\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -134,6 +133,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

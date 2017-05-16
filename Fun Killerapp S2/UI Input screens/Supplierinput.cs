@@ -12,7 +12,7 @@ namespace Fun_Killerapp_S2
 {
     public partial class Supplierinput : Form
     {
-        SupplierInfo supplierinfo = new SupplierInfo();
+        SupplierContext supplierinfo = new SupplierContext();
         public Supplierinput()
         {
             InitializeComponent();
@@ -20,8 +20,7 @@ namespace Fun_Killerapp_S2
 
         private void btnconfirm_Click(object sender, EventArgs e)
         {
-            supplierinfo.Addsupplier(tbsuppliername.Text, tbsupplierlocation.Text);
-            this.Close();
+
         }
     }
 }

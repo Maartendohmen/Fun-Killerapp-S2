@@ -1,6 +1,6 @@
 ﻿namespace Fun_Killerapp_S2
 {
-    partial class Customer
+    partial class CustomerForm
     {
         /// <summary>
         /// Required designer variable.

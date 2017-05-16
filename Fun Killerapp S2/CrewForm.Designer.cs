@@ -1,6 +1,6 @@
 ﻿namespace Fun_Killerapp_S2
 {
-    partial class Crew
+    partial class CrewForm
     {
         /// <summary>
         /// Required designer variable.

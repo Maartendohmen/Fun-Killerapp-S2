@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Fun_Killerapp_S2.DAL.Interface
 {
-    interface ISupplierInfo
+    interface Main
     {
-        void Getallallsupliers();
-        void Addsupplier(string name, string location);
+
     }
 }

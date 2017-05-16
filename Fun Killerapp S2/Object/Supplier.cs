@@ -8,8 +8,15 @@ namespace Fun_Killerapp_S2.Object
 {
     public class Supplier
     {
+        private int supplierid;
         private string name;
         private string location;
+
+        public int SupplierID
+        {
+            get { return supplierid; }
+            private set { supplierid = value; }
+        }
 
         public string Name
         {
@@ -23,8 +30,9 @@ namespace Fun_Killerapp_S2.Object
             private set { location = value; }
         }
 
-        public Supplier(string name,string location)
+        public Supplier(int supplierid, string name,string location)
         {
+            this.supplierid = supplierid;
             this.name = name;
             this.location = location;
         }

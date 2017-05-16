@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Fun_Killerapp_S2.Object
 {
-    public class Orders
+    public class Order
     {
         private int orderid;
         private Customer customer;
@@ -45,7 +45,7 @@ namespace Fun_Killerapp_S2.Object
             private set { products = value; }
         }
 
-        public Orders(int orderid, Customer customer, DateTime dateordered,OrderStatus.Orderstatus status, List<Product> products)
+        public Order(int orderid, Customer customer, DateTime dateordered,OrderStatus.Orderstatus status, List<Product> products)
         {
             this.orderid = orderid;
             this.customer = customer;
