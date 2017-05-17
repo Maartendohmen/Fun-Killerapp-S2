@@ -33,7 +33,6 @@
             this.lbusername = new System.Windows.Forms.Label();
             this.lbpassword = new System.Windows.Forms.Label();
             this.btnconfirm = new System.Windows.Forms.Button();
-            this.chbCrewmember = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // tbUsername
@@ -79,22 +78,11 @@
             this.btnconfirm.UseVisualStyleBackColor = true;
             this.btnconfirm.Click += new System.EventHandler(this.btnconfirm_Click);
             // 
-            // chbCrewmember
-            // 
-            this.chbCrewmember.AutoSize = true;
-            this.chbCrewmember.Location = new System.Drawing.Point(15, 185);
-            this.chbCrewmember.Name = "chbCrewmember";
-            this.chbCrewmember.Size = new System.Drawing.Size(87, 17);
-            this.chbCrewmember.TabIndex = 5;
-            this.chbCrewmember.Text = "Crewmember";
-            this.chbCrewmember.UseVisualStyleBackColor = true;
-            // 
             // frmlogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(442, 223);
-            this.Controls.Add(this.chbCrewmember);
             this.Controls.Add(this.btnconfirm);
             this.Controls.Add(this.lbpassword);
             this.Controls.Add(this.lbusername);
@@ -111,7 +99,6 @@
         private System.Windows.Forms.Label lbusername;
         private System.Windows.Forms.Label lbpassword;
         private System.Windows.Forms.Button btnconfirm;
-        private System.Windows.Forms.CheckBox chbCrewmember;
         private System.Windows.Forms.TextBox tbUsername;
         private System.Windows.Forms.TextBox tbPassword;
     }

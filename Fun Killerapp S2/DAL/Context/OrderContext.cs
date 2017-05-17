@@ -4,6 +4,7 @@ using Fun_Killerapp_S2.DAL.Interface;
 using Fun_Killerapp_S2.Object;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -94,6 +95,33 @@ namespace Fun_Killerapp_S2
                 }
             }
             return null;
+        }
+
+        public void Save(List<object> orderinput , int customerid)
+        {
+            List<Product> Allproducts = orderinput.Cast<Product>().ToList();
+            conn.Open();
+            string saveorderprocedure = "TestProcedure";
+            SqlCommand SaveOrder = new SqlCommand(saveorderprocedure, conn);
+            SaveOrder.CommandType = CommandType.StoredProcedure;
+
+            DataTable datatabel = new DataTable();
+            datatabel.Columns.Add("ProductID");
+
+            foreach (Product product in Allproducts)
+            {
+                datatabel.Rows.Add(product.ProductID);
+            }
+            //need to add all the parameters
+            SqlParameter Givelist = new SqlParameter();
+            Givelist.ParameterName = "@List";
+            Givelist.Value = datatabel;
+
+            SaveOrder.Parameters.Add(Givelist);
+            SaveOrder.Parameters.AddWithValue("id", customerid);
+            SaveOrder.Parameters.AddWithValue("placedate", DateTime.Now);
+            SaveOrder.ExecuteNonQuery();
+
         }
     }
 }

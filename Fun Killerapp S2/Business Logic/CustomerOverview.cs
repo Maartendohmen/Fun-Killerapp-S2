@@ -15,6 +15,7 @@ namespace Fun_Killerapp_S2
         SupplierContext suppliercontext = new SupplierContext();
         UserContext usercontext = new UserContext();
         CustomerContext customercontext = new CustomerContext();
+        CrewContext crewcontext = new CrewContext();
 
         public object GetCurrentUser(string emailadres, string password)
         {
@@ -26,10 +27,22 @@ namespace Fun_Killerapp_S2
             }
             else
             {
-                return null;
+                return crewcontext.GetOne(currentuser.CrewID);
             }
         }
 
+        public List<Product> GetAllProducts()
+        {
+            List<Product> allproducts = productcontext.GetAll(suppliercontext.GetAll().Cast<Supplier>().ToList(), new List<Discount>()).Cast<Product>().ToList();
+            return allproducts;
+        }
+
+        public void placeorder(List<Product> producten, int customerid)
+        {
+            //needs work what to do with list
+            List<object> Orderinput = producten.Cast<object>().ToList();
+            ordercontext.Save(Orderinput, customerid);
+        }
         
     }
 }

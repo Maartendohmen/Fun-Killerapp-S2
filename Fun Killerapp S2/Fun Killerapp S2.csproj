@@ -61,6 +61,7 @@
     </Compile>
     <Compile Include="Business Logic\CustomerOverview.cs" />
     <Compile Include="DAL\Connectionstring.cs" />
+    <Compile Include="DAL\Context\CrewContext.cs" />
     <Compile Include="DAL\Context\CustomerContext.cs" />
     <Compile Include="DAL\Context\ProductContext.cs" />
     <Compile Include="DAL\Interface\Main.cs" />

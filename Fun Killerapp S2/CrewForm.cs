@@ -24,7 +24,8 @@ namespace Fun_Killerapp_S2
 
         private void Crew_Load(object sender, EventArgs e)
         {
-  
+            lbLoggedinas.Text = "You're logged in as: " + currentcrewmember.Name;
+            lblastloggedin.Text = "You last login was on: " + currentcrewmember.LasttimeLogin.ToString();
         }
 
         private void btnaddsupplier_Click(object sender, EventArgs e)

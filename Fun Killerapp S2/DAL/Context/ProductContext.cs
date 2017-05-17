@@ -15,12 +15,13 @@ namespace Fun_Killerapp_S2
     {
         public List<object> GetAll(List<Supplier> allsuppliers, List<Discount> alldiscounts)
         {
+            conn.Open();
             List<Product> products = new List<Product>();
             List<Discount> discounts = new List<Discount>();            
             Supplier productsupplier = new Supplier(-1,"","");
             Productsoort productsoort = Productsoort.Boeken;
 
-            string querygetallproducts = "SELECT ProductID, SupplierID, DiscountID, Price,Name,Catagorie,Amount FROM Product";
+            string querygetallproducts = "SELECT ProductID, SupplierID, Price,Name,Catagorie,Amount FROM Product";
             SqlCommand Getallproducts = new SqlCommand(querygetallproducts, conn);
 
             using (SqlDataReader reader = Getallproducts.ExecuteReader())
@@ -58,6 +59,7 @@ namespace Fun_Killerapp_S2
                     products.Add(new Product(Convert.ToInt32(reader["ProductID"]), productsupplier, discounts, Convert.ToDecimal(reader["Price"]), reader["Name"].ToString(), productsoort, Convert.ToInt32(reader["Amount"])));
                 }
             }
+            conn.Close();
             return products.Cast<object>().ToList();
         }
 

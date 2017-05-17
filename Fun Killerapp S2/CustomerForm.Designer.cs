@@ -28,34 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lnboggedinas = new System.Windows.Forms.Label();
-            this.lbproducts = new System.Windows.Forms.ListBox();
+            this.lbloggedinas = new System.Windows.Forms.Label();
             this.lbSearch = new System.Windows.Forms.Label();
             this.tbsearch = new System.Windows.Forms.TextBox();
             this.btnaddtocart = new System.Windows.Forms.Button();
             this.btnclearcart = new System.Windows.Forms.Button();
             this.lbnumberofproducts = new System.Windows.Forms.Label();
-            this.lbProductsincart = new System.Windows.Forms.Label();
             this.btnplaceorder = new System.Windows.Forms.Button();
             this.btnShowcart = new System.Windows.Forms.Button();
+            this.Productsgridview = new System.Windows.Forms.DataGridView();
+            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categorie = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.Productsgridview)).BeginInit();
             this.SuspendLayout();
             // 
-            // lnboggedinas
+            // lbloggedinas
             // 
-            this.lnboggedinas.AutoSize = true;
-            this.lnboggedinas.Location = new System.Drawing.Point(553, 23);
-            this.lnboggedinas.Name = "lnboggedinas";
-            this.lnboggedinas.Size = new System.Drawing.Size(63, 13);
-            this.lnboggedinas.TabIndex = 0;
-            this.lnboggedinas.Text = "!willchange!";
+            this.lbloggedinas.AutoSize = true;
+            this.lbloggedinas.Location = new System.Drawing.Point(553, 23);
+            this.lbloggedinas.Name = "lbloggedinas";
+            this.lbloggedinas.Size = new System.Drawing.Size(104, 13);
+            this.lbloggedinas.TabIndex = 0;
+            this.lbloggedinas.Text = "You\'re Logged in as:";
             // 
-            // lbproducts
-            // 
-            this.lbproducts.FormattingEnabled = true;
-            this.lbproducts.Location = new System.Drawing.Point(39, 76);
-            this.lbproducts.Name = "lbproducts";
-            this.lbproducts.Size = new System.Drawing.Size(416, 329);
-            this.lbproducts.TabIndex = 1;            // 
             // lbSearch
             // 
             this.lbSearch.AutoSize = true;
@@ -98,18 +95,9 @@
             this.lbnumberofproducts.AutoSize = true;
             this.lbnumberofproducts.Location = new System.Drawing.Point(39, 419);
             this.lbnumberofproducts.Name = "lbnumberofproducts";
-            this.lbnumberofproducts.Size = new System.Drawing.Size(135, 13);
+            this.lbnumberofproducts.Size = new System.Drawing.Size(144, 13);
             this.lbnumberofproducts.TabIndex = 6;
-            this.lbnumberofproducts.Text = "Number of products in cart:";
-            // 
-            // lbProductsincart
-            // 
-            this.lbProductsincart.AutoSize = true;
-            this.lbProductsincart.Location = new System.Drawing.Point(180, 419);
-            this.lbProductsincart.Name = "lbProductsincart";
-            this.lbProductsincart.Size = new System.Drawing.Size(13, 13);
-            this.lbProductsincart.TabIndex = 7;
-            this.lbProductsincart.Text = "0";
+            this.lbnumberofproducts.Text = "Number of products in cart: 0";
             // 
             // btnplaceorder
             // 
@@ -131,24 +119,64 @@
             this.btnShowcart.UseVisualStyleBackColor = true;
             this.btnShowcart.Click += new System.EventHandler(this.btnShowcart_Click);
             // 
-            // Customer
+            // Productsgridview
+            // 
+            this.Productsgridview.AllowUserToAddRows = false;
+            this.Productsgridview.AllowUserToDeleteRows = false;
+            this.Productsgridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Productsgridview.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Name,
+            this.Price,
+            this.categorie,
+            this.Stock});
+            this.Productsgridview.Location = new System.Drawing.Point(33, 65);
+            this.Productsgridview.Name = "Productsgridview";
+            this.Productsgridview.ReadOnly = true;
+            this.Productsgridview.Size = new System.Drawing.Size(422, 331);
+            this.Productsgridview.TabIndex = 10;
+            // 
+            // Name
+            // 
+            this.Name.HeaderText = "Name";
+            this.Name.Name = "Name";
+            this.Name.ReadOnly = true;
+            // 
+            // Price
+            // 
+            this.Price.HeaderText = "Price";
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
+            // 
+            // categorie
+            // 
+            this.categorie.HeaderText = "Categorie";
+            this.categorie.Name = "categorie";
+            this.categorie.ReadOnly = true;
+            // 
+            // Stock
+            // 
+            this.Stock.HeaderText = "Stock";
+            this.Stock.Name = "Stock";
+            this.Stock.ReadOnly = true;
+            this.Stock.Width = 78;
+            // 
+            // CustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(721, 445);
+            this.Controls.Add(this.Productsgridview);
             this.Controls.Add(this.btnShowcart);
             this.Controls.Add(this.btnplaceorder);
-            this.Controls.Add(this.lbProductsincart);
             this.Controls.Add(this.lbnumberofproducts);
             this.Controls.Add(this.btnclearcart);
             this.Controls.Add(this.btnaddtocart);
             this.Controls.Add(this.tbsearch);
             this.Controls.Add(this.lbSearch);
-            this.Controls.Add(this.lbproducts);
-            this.Controls.Add(this.lnboggedinas);
-            this.Name = "Customer";
+            this.Controls.Add(this.lbloggedinas);
             this.Text = "Customer";
             this.Load += new System.EventHandler(this.Customer_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.Productsgridview)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -156,15 +184,18 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lnboggedinas;
-        private System.Windows.Forms.ListBox lbproducts;
+        private System.Windows.Forms.Label lbloggedinas;
         private System.Windows.Forms.Label lbSearch;
         private System.Windows.Forms.TextBox tbsearch;
         private System.Windows.Forms.Button btnaddtocart;
         private System.Windows.Forms.Button btnclearcart;
         private System.Windows.Forms.Label lbnumberofproducts;
-        private System.Windows.Forms.Label lbProductsincart;
         private System.Windows.Forms.Button btnplaceorder;
         private System.Windows.Forms.Button btnShowcart;
+        private System.Windows.Forms.DataGridView Productsgridview;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn categorie;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Stock;
     }
 }

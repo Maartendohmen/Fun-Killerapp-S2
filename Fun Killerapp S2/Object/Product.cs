@@ -15,7 +15,7 @@ namespace Fun_Killerapp_S2
         private List<Discount> discount;
         private decimal price;
         private string name;
-        private ProductCatagorie.Productsoort productsoort;
+        private ProductCatagorie.Productsoort categorie;
         private int amount;
 
         public int ProductID
@@ -48,10 +48,10 @@ namespace Fun_Killerapp_S2
             private set { name = value; }
         }
 
-        public ProductCatagorie.Productsoort Productsoort
+        public ProductCatagorie.Productsoort Categorie
         {
-            get { return productsoort; }
-            private set { productsoort = value; }
+            get { return categorie; }
+            private set { categorie = value; }
         }
 
         public int Amount
@@ -60,14 +60,14 @@ namespace Fun_Killerapp_S2
             private set { amount = value; }
         }
 
-        public Product(int productid, Supplier supplier, List<Discount> discount,decimal price,string name, ProductCatagorie.Productsoort productsoort, int amount)
+        public Product(int productid, Supplier supplier, List<Discount> discount,decimal price,string name, ProductCatagorie.Productsoort categorie, int amount)
         {
             this.productid = productid;
             this.supplier = supplier;
             this.discount = discount;
             this.price = price;
             this.name = name;
-            this.productsoort = productsoort;
+            this.categorie = categorie;
             this.amount = amount;
         }
 
