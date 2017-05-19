@@ -19,6 +19,7 @@ namespace Fun_Killerapp_S2
         public CrewForm(object type_User)
         {
             InitializeComponent();
+            this.Location = new Point(0, 0);
             currentcrewmember = (Crew)type_User;        
         }
 

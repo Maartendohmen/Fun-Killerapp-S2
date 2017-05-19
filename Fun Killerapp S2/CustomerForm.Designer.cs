@@ -130,8 +130,10 @@
             this.categorie,
             this.Stock});
             this.Productsgridview.Location = new System.Drawing.Point(33, 65);
+            this.Productsgridview.MultiSelect = false;
             this.Productsgridview.Name = "Productsgridview";
             this.Productsgridview.ReadOnly = true;
+            this.Productsgridview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Productsgridview.Size = new System.Drawing.Size(422, 331);
             this.Productsgridview.TabIndex = 10;
             // 
@@ -193,7 +195,7 @@
         private System.Windows.Forms.Button btnplaceorder;
         private System.Windows.Forms.Button btnShowcart;
         private System.Windows.Forms.DataGridView Productsgridview;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
+        private new System.Windows.Forms.DataGridViewTextBoxColumn Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn categorie;
         private System.Windows.Forms.DataGridViewTextBoxColumn Stock;

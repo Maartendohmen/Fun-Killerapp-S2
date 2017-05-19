@@ -40,22 +40,22 @@
             // lbproducts
             // 
             this.lbproducts.FormattingEnabled = true;
-            this.lbproducts.Location = new System.Drawing.Point(12, 12);
+            this.lbproducts.Location = new System.Drawing.Point(12, 25);
             this.lbproducts.Name = "lbproducts";
-            this.lbproducts.Size = new System.Drawing.Size(540, 186);
+            this.lbproducts.Size = new System.Drawing.Size(631, 316);
             this.lbproducts.TabIndex = 2;
             // 
             // lbOrders
             // 
             this.lbOrders.FormattingEnabled = true;
-            this.lbOrders.Location = new System.Drawing.Point(12, 220);
+            this.lbOrders.Location = new System.Drawing.Point(12, 480);
             this.lbOrders.Name = "lbOrders";
-            this.lbOrders.Size = new System.Drawing.Size(540, 225);
+            this.lbOrders.Size = new System.Drawing.Size(639, 316);
             this.lbOrders.TabIndex = 3;
             // 
             // btnaddsupplier
             // 
-            this.btnaddsupplier.Location = new System.Drawing.Point(858, 235);
+            this.btnaddsupplier.Location = new System.Drawing.Point(1349, 416);
             this.btnaddsupplier.Name = "btnaddsupplier";
             this.btnaddsupplier.Size = new System.Drawing.Size(201, 32);
             this.btnaddsupplier.TabIndex = 5;
@@ -65,7 +65,7 @@
             // 
             // btnpriceupdate
             // 
-            this.btnpriceupdate.Location = new System.Drawing.Point(858, 301);
+            this.btnpriceupdate.Location = new System.Drawing.Point(1349, 492);
             this.btnpriceupdate.Name = "btnpriceupdate";
             this.btnpriceupdate.Size = new System.Drawing.Size(201, 32);
             this.btnpriceupdate.TabIndex = 6;
@@ -76,15 +76,15 @@
             // lbsuppliers
             // 
             this.lbsuppliers.FormattingEnabled = true;
-            this.lbsuppliers.Location = new System.Drawing.Point(248, 161);
+            this.lbsuppliers.Location = new System.Drawing.Point(682, 25);
             this.lbsuppliers.Name = "lbsuppliers";
-            this.lbsuppliers.Size = new System.Drawing.Size(501, 186);
+            this.lbsuppliers.Size = new System.Drawing.Size(641, 316);
             this.lbsuppliers.TabIndex = 4;
             // 
             // lbLoggedinas
             // 
             this.lbLoggedinas.AutoSize = true;
-            this.lbLoggedinas.Location = new System.Drawing.Point(866, 25);
+            this.lbLoggedinas.Location = new System.Drawing.Point(1346, 35);
             this.lbLoggedinas.Name = "lbLoggedinas";
             this.lbLoggedinas.Size = new System.Drawing.Size(100, 13);
             this.lbLoggedinas.TabIndex = 7;
@@ -93,7 +93,7 @@
             // lblastloggedin
             // 
             this.lblastloggedin.AutoSize = true;
-            this.lblastloggedin.Location = new System.Drawing.Point(866, 57);
+            this.lblastloggedin.Location = new System.Drawing.Point(1346, 78);
             this.lblastloggedin.Name = "lblastloggedin";
             this.lblastloggedin.Size = new System.Drawing.Size(76, 13);
             this.lblastloggedin.TabIndex = 8;
@@ -103,7 +103,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1103, 517);
+            this.ClientSize = new System.Drawing.Size(1584, 821);
             this.Controls.Add(this.lblastloggedin);
             this.Controls.Add(this.lbLoggedinas);
             this.Controls.Add(this.btnpriceupdate);
@@ -112,6 +112,7 @@
             this.Controls.Add(this.lbOrders);
             this.Controls.Add(this.lbproducts);
             this.Name = "CrewForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Crew";
             this.Load += new System.EventHandler(this.Crew_Load);
             this.ResumeLayout(false);

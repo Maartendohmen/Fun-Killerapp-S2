@@ -39,7 +39,6 @@ namespace Fun_Killerapp_S2
 
         public void placeorder(List<Product> producten, int customerid)
         {
-            //needs work what to do with list
             List<object> Orderinput = producten.Cast<object>().ToList();
             ordercontext.Save(Orderinput, customerid);
         }

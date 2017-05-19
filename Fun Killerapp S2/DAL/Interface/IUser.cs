@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Fun_Killerapp_S2.DAL.Interface
 {
-    interface Main
+    interface IUser
     {
+        List<object> GetAll();
+        object GetOne(string emailadres, string password);
 
     }
 }

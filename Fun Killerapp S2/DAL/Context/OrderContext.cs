@@ -13,10 +13,13 @@ using static Fun_Killerapp_S2.Object.Enum.OrderStatus;
 
 namespace Fun_Killerapp_S2 
 {
-    class OrderContext : Connectionstring
+    class OrderContext : Connectionstring, IOrder
     {
-        public List<object> GetAll(List<Product> allproducts, List<Customer> allcustomers)
+        public List<object> GetAll(List<object> allproducts, List<object> allcustomers)
         {
+            List<Product> allproducten = allproducts.Cast<Product>().ToList();
+            List<Customer> Customers = allcustomers.Cast<Customer>().ToList();
+
             List<Product> noproducts = new List<Product>();
             List<Order> Orders = new List<Order>();
             Orderstatus orderstatus = Orderstatus.ordered;
@@ -42,7 +45,7 @@ namespace Fun_Killerapp_S2
                         orderstatus = Orderstatus.ordered;
                     }
 
-                    foreach (Customer cus in allcustomers)
+                    foreach (Customer cus in Customers)
                     {
                         if (cus.CustomerID == Convert.ToInt32(reader["CustomerID"]))
                         {
@@ -55,8 +58,11 @@ namespace Fun_Killerapp_S2
             return Orders.Cast<object>().ToList();
         }
 
-        public object GetOne(List<Product> allproducts, List<Customer> allcustomers, int id)
+        public object GetOne(List<object> allproducts, List<object> allcustomers, int id)
         {
+            List<Product> allproducten = allproducts.Cast<Product>().ToList();
+            List<Customer> Customers = allcustomers.Cast<Customer>().ToList();
+
             List<Product> noproducts = new List<Product>();
             List<Order> Orders = new List<Order>();
             Orderstatus orderstatus = Orderstatus.ordered;

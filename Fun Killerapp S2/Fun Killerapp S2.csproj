@@ -64,7 +64,16 @@
     <Compile Include="DAL\Context\CrewContext.cs" />
     <Compile Include="DAL\Context\CustomerContext.cs" />
     <Compile Include="DAL\Context\ProductContext.cs" />
-    <Compile Include="DAL\Interface\Main.cs" />
+    <Compile Include="DAL\Interface\IMain.cs" />
+    <Compile Include="DAL\Interface\IOrder.cs" />
+    <Compile Include="DAL\Interface\IProduct.cs" />
+    <Compile Include="DAL\Interface\IUser.cs" />
+    <Compile Include="DAL\Logic\CrewRepository.cs" />
+    <Compile Include="DAL\Logic\CustomerRepository.cs" />
+    <Compile Include="DAL\Logic\OrderRepository.cs" />
+    <Compile Include="DAL\Logic\ProductRepository.cs" />
+    <Compile Include="DAL\Logic\SupplierRepository.cs" />
+    <Compile Include="DAL\Logic\UserRepository.cs" />
     <Compile Include="Object\Crew.cs" />
     <Compile Include="Object\Discount.cs" />
     <Compile Include="Object\Enum\OrderStatus.cs" />

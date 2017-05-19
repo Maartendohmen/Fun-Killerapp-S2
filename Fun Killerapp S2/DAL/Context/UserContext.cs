@@ -1,4 +1,5 @@
 ﻿using Fun_Killerapp_S2.DAL;
+using Fun_Killerapp_S2.DAL.Interface;
 using Fun_Killerapp_S2.Object;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Fun_Killerapp_S2
 {
-    class UserContext : Connectionstring
+    class UserContext : Connectionstring, IUser
     {
         public List<object> GetAll()
         {
