@@ -97,7 +97,7 @@ namespace Fun_Killerapp_S2
 
 
 
-        public void Showproducts(List<Product> products)
+        private void Showproducts(List<Product> products)
         {
             foreach (Product product in products)
             {

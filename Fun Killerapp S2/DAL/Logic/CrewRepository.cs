@@ -11,7 +11,7 @@ namespace Fun_Killerapp_S2.DAL.Logic
 {
     class CrewRepository
     {
-        private IMain context;
+        private ICrew context;
 
         public CrewRepository()
         {
@@ -28,11 +28,9 @@ namespace Fun_Killerapp_S2.DAL.Logic
             return (Crew)this.context.GetOne(id);
         }
 
-
-
-
-
-
-
+        public void SaveLastlogin(DateTime lasttimelogin, int crewid)
+        {
+            context.Save(lasttimelogin, crewid);
+        }
     }
 }

@@ -29,12 +29,18 @@
         private void InitializeComponent()
         {
             this.lbproducts = new System.Windows.Forms.ListBox();
-            this.lbOrders = new System.Windows.Forms.ListBox();
             this.btnaddsupplier = new System.Windows.Forms.Button();
             this.btnpriceupdate = new System.Windows.Forms.Button();
             this.lbsuppliers = new System.Windows.Forms.ListBox();
             this.lbLoggedinas = new System.Windows.Forms.Label();
             this.lblastloggedin = new System.Windows.Forms.Label();
+            this.Ordersgridview = new System.Windows.Forms.DataGridView();
+            this.OrderID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateOrdered = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.Ordersgridview)).BeginInit();
             this.SuspendLayout();
             // 
             // lbproducts
@@ -44,14 +50,6 @@
             this.lbproducts.Name = "lbproducts";
             this.lbproducts.Size = new System.Drawing.Size(631, 316);
             this.lbproducts.TabIndex = 2;
-            // 
-            // lbOrders
-            // 
-            this.lbOrders.FormattingEnabled = true;
-            this.lbOrders.Location = new System.Drawing.Point(12, 480);
-            this.lbOrders.Name = "lbOrders";
-            this.lbOrders.Size = new System.Drawing.Size(639, 316);
-            this.lbOrders.TabIndex = 3;
             // 
             // btnaddsupplier
             // 
@@ -99,22 +97,63 @@
             this.lblastloggedin.TabIndex = 8;
             this.lblastloggedin.Text = "Last logged in:";
             // 
+            // Ordersgridview
+            // 
+            this.Ordersgridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Ordersgridview.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.OrderID,
+            this.Customer,
+            this.DateOrdered,
+            this.Status,
+            this.TotalPrice});
+            this.Ordersgridview.Location = new System.Drawing.Point(56, 482);
+            this.Ordersgridview.Name = "Ordersgridview";
+            this.Ordersgridview.Size = new System.Drawing.Size(545, 279);
+            this.Ordersgridview.TabIndex = 9;
+            // 
+            // OrderID
+            // 
+            this.OrderID.HeaderText = "OrderID";
+            this.OrderID.Name = "OrderID";
+            // 
+            // Customer
+            // 
+            this.Customer.HeaderText = "Customer";
+            this.Customer.Name = "Customer";
+            // 
+            // DateOrdered
+            // 
+            this.DateOrdered.HeaderText = "DateOrdered";
+            this.DateOrdered.Name = "DateOrdered";
+            // 
+            // Status
+            // 
+            this.Status.HeaderText = "Status";
+            this.Status.Name = "Status";
+            // 
+            // TotalPrice
+            // 
+            this.TotalPrice.HeaderText = "TotalPrice";
+            this.TotalPrice.Name = "TotalPrice";
+            // 
             // CrewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1584, 821);
+            this.Controls.Add(this.Ordersgridview);
             this.Controls.Add(this.lblastloggedin);
             this.Controls.Add(this.lbLoggedinas);
             this.Controls.Add(this.btnpriceupdate);
             this.Controls.Add(this.btnaddsupplier);
             this.Controls.Add(this.lbsuppliers);
-            this.Controls.Add(this.lbOrders);
             this.Controls.Add(this.lbproducts);
             this.Name = "CrewForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Crew";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CrewForm_FormClosing);
             this.Load += new System.EventHandler(this.Crew_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.Ordersgridview)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -123,11 +162,16 @@
         #endregion
 
         private System.Windows.Forms.ListBox lbproducts;
-        private System.Windows.Forms.ListBox lbOrders;
         private System.Windows.Forms.Button btnaddsupplier;
         private System.Windows.Forms.Button btnpriceupdate;
         private System.Windows.Forms.ListBox lbsuppliers;
         private System.Windows.Forms.Label lbLoggedinas;
         private System.Windows.Forms.Label lblastloggedin;
+        private System.Windows.Forms.DataGridView Ordersgridview;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OrderID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Customer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DateOrdered;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalPrice;
     }
 }

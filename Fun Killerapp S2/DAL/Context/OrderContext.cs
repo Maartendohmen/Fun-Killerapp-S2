@@ -17,6 +17,7 @@ namespace Fun_Killerapp_S2
     {
         public List<object> GetAll(List<object> allproducts, List<object> allcustomers)
         {
+            conn.Open();
             List<Product> allproducten = allproducts.Cast<Product>().ToList();
             List<Customer> Customers = allcustomers.Cast<Customer>().ToList();
 
@@ -25,7 +26,7 @@ namespace Fun_Killerapp_S2
             Orderstatus orderstatus = Orderstatus.ordered;
             Customer current = new Customer(-1, "", "", -1);
 
-            string querygetallorders = "SELECT OrderID,CustomerID,Date,Status From Order";
+            string querygetallorders = "SELECT OrderID,CustomerID,Date,Status,Totalprice From [Order]";
             SqlCommand Getallorders = new SqlCommand(querygetallorders, conn);
 
             using (SqlDataReader reader = Getallorders.ExecuteReader())
@@ -52,9 +53,10 @@ namespace Fun_Killerapp_S2
                             current = cus;
                         }
                     }
-                    Orders.Add(new Order(Convert.ToInt32(reader["OrderID"]), current ,DateTime.Parse(reader["Date"].ToString()),orderstatus,noproducts));
+                    Orders.Add(new Order(Convert.ToInt32(reader["OrderID"]), current ,DateTime.Parse(reader["Date"].ToString()),orderstatus,noproducts,Convert.ToDecimal(reader["Totalprice"])));
                 }
             }
+            conn.Close();
             return Orders.Cast<object>().ToList();
         }
 
@@ -68,7 +70,7 @@ namespace Fun_Killerapp_S2
             Orderstatus orderstatus = Orderstatus.ordered;
             Customer current = new Customer(-1,"", "", -1);
 
-            string querygetallorders = "SELECT OrderID,CustomerID,Date,Status FROM Product WHERE Orderid = @id";
+            string querygetallorders = "SELECT OrderID,CustomerID,Date,Status,Totalprice FROM [Order] WHERE Orderid = @id";
             SqlCommand Getallorders = new SqlCommand(querygetallorders, conn);
             Getallorders.Parameters.AddWithValue("id", id);
 
@@ -96,7 +98,7 @@ namespace Fun_Killerapp_S2
                             current = cus;
                         }
                     }
-                    Order toadd = (new Order(Convert.ToInt32(reader["OrderID"]), current, DateTime.Parse(reader["Date"].ToString()), orderstatus, noproducts));
+                    Order toadd = (new Order(Convert.ToInt32(reader["OrderID"]), current, DateTime.Parse(reader["Date"].ToString()), orderstatus, noproducts, Convert.ToDecimal(reader["Totalprice"])));
                     return toadd;
                 }
             }
@@ -127,7 +129,6 @@ namespace Fun_Killerapp_S2
             SaveOrder.Parameters.AddWithValue("id", customerid);
             SaveOrder.Parameters.AddWithValue("placedate", DateTime.Now);
             SaveOrder.ExecuteNonQuery();
-
         }
     }
 }

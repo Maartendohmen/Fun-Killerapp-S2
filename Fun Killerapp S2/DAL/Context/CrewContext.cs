@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Fun_Killerapp_S2.DAL.Context
 {
-    class CrewContext : Connectionstring, IMain
+    class CrewContext : Connectionstring, ICrew
     {
         public List<object> GetAll()
         {
@@ -46,6 +46,17 @@ namespace Fun_Killerapp_S2.DAL.Context
                 }
             }
             return null;
+        }
+
+        public void Save(DateTime lasttimelogin, int crewid)
+        {
+            string updatequery = @"UPDATE Crew SET Lasttimelogin = @lasttimelogin WHERE CrewID = @id;";
+            SqlCommand UpdateLasttimelogin = new SqlCommand(updatequery, conn);
+            UpdateLasttimelogin.Parameters.AddWithValue("lasttimelogin", lasttimelogin);
+            UpdateLasttimelogin.Parameters.AddWithValue("id", crewid);
+            conn.Open();
+            UpdateLasttimelogin.ExecuteNonQuery();
+            conn.Close();            
         }
     
     }

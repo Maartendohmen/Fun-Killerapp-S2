@@ -14,6 +14,7 @@ namespace Fun_Killerapp_S2.Object
         DateTime dateordered;
         OrderStatus.Orderstatus status;
         private List<Product> products;
+        decimal totalprice;
 
         public int OrderID
         {
@@ -45,13 +46,20 @@ namespace Fun_Killerapp_S2.Object
             private set { products = value; }
         }
 
-        public Order(int orderid, Customer customer, DateTime dateordered,OrderStatus.Orderstatus status, List<Product> products)
+        public decimal Totalprice
+        {
+            get { return totalprice; }
+            private set { totalprice = value; }
+        }
+
+        public Order(int orderid, Customer customer, DateTime dateordered,OrderStatus.Orderstatus status, List<Product> products, decimal totalprice)
         {
             this.orderid = orderid;
             this.customer = customer;
             this.dateordered = dateordered;
             this.status = status;
             this.products = products;
+            this.totalprice = totalprice;
         }
 
     }

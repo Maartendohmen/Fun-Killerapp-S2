@@ -27,6 +27,7 @@ namespace Fun_Killerapp_S2
         {
             lbLoggedinas.Text = "You're logged in as: " + currentcrewmember.Name;
             lblastloggedin.Text = "You last login was on: " + currentcrewmember.LasttimeLogin.ToString();
+            Showorders(crewoverview.GetAllOrders());
         }
 
         private void btnaddsupplier_Click(object sender, EventArgs e)
@@ -37,6 +38,20 @@ namespace Fun_Killerapp_S2
         private void btnpriceupdate_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void CrewForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            crewoverview.Savelasttimelogin(DateTime.Now, currentcrewmember.CrewID);
+        }
+
+
+        private void Showorders(List<Order> Orders)
+        {
+            foreach (Order order in Orders)
+            {
+                Ordersgridview.Rows.Add(order.OrderID, order.Customer.Name, order.Dateordered, order.Status, order.Totalprice);
+            }
         }
     }
 }

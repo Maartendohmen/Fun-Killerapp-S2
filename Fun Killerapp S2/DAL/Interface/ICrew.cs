@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fun_Killerapp_S2
+namespace Fun_Killerapp_S2.DAL.Interface
 {
-    class CrewOverview 
+    interface ICrew : IMain
     {
+       void Save(DateTime lasttimelogin, int crewid);
     }
 }
