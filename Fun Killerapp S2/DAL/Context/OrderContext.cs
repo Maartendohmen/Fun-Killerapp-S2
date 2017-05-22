@@ -23,7 +23,7 @@ namespace Fun_Killerapp_S2
 
             List<Product> noproducts = new List<Product>();
             List<Order> Orders = new List<Order>();
-            Orderstatus orderstatus = Orderstatus.ordered;
+            Orderstatus orderstatus = Orderstatus.Ordered;
             Customer current = new Customer(-1, "", "", -1);
 
             string querygetallorders = "SELECT OrderID,CustomerID,Date,Status,Totalprice From [Order]";
@@ -35,15 +35,15 @@ namespace Fun_Killerapp_S2
                 {
                     if (reader["Status"].ToString() == "Verzonden")
                     {
-                        orderstatus = Orderstatus.verzonden;
+                        orderstatus = Orderstatus.Verzonden;
                     }
                     else if (reader["Status"].ToString() == "Verwerkt")
                     {
-                        orderstatus = Orderstatus.verwerkt;
+                        orderstatus = Orderstatus.Verwerkt;
                     }
                     else if (reader["Status"].ToString() == "Ordered")
                     {
-                        orderstatus = Orderstatus.ordered;
+                        orderstatus = Orderstatus.Ordered;
                     }
 
                     foreach (Customer cus in Customers)
@@ -68,7 +68,7 @@ namespace Fun_Killerapp_S2
             //for new single order
             DateTime dateordered = DateTime.Now;
             decimal totalprice = 0;
-            Orderstatus orderstatus = Orderstatus.ordered;
+            Orderstatus orderstatus = Orderstatus.Ordered;
             Customer current = new Customer(-1, "", "", -1);
             List<Product> EmptyList = new List<Product>();
 
@@ -87,15 +87,15 @@ namespace Fun_Killerapp_S2
 
                     if (reader["Status"].ToString() == "Verzonden")
                     {
-                        orderstatus = Orderstatus.verzonden;
+                        orderstatus = Orderstatus.Verzonden;
                     }
                     else if (reader["Status"].ToString() == "Verwerkt")
                     {
-                        orderstatus = Orderstatus.verwerkt;
+                        orderstatus = Orderstatus.Verwerkt;
                     }
                     else if (reader["Status"].ToString() == "Ordered")
                     {
-                        orderstatus = Orderstatus.ordered;
+                        orderstatus = Orderstatus.Ordered;
                     }
                     foreach (Customer cus in allcustomers)
                     {
@@ -128,17 +128,16 @@ namespace Fun_Killerapp_S2
         }
 
         public void Save(List<object> orderinput , int customerid)
-        {
-            List<Product> Allproducts = orderinput.Cast<Product>().ToList();
+        { 
             conn.Open();
-            string saveorderprocedure = "TestProcedure";
+            string saveorderprocedure = "PlaceOrder";
             SqlCommand SaveOrder = new SqlCommand(saveorderprocedure, conn);
             SaveOrder.CommandType = CommandType.StoredProcedure;
 
             DataTable datatabel = new DataTable();
             datatabel.Columns.Add("ProductID");
 
-            foreach (Product product in Allproducts)
+            foreach (Product product in orderinput)
             {
                 datatabel.Rows.Add(product.ProductID);
             }

@@ -52,6 +52,9 @@
     <Compile Include="CrewForm.Designer.cs">
       <DependentUpon>CrewForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DAL\Context\DiscountContext.cs" />
+    <Compile Include="DAL\Interface\IDiscounts.cs" />
+    <Compile Include="DAL\Logic\DiscountRepository.cs" />
     <Compile Include="Overviews\CrewOverview.cs" />
     <Compile Include="CustomerForm.cs">
       <SubType>Form</SubType>

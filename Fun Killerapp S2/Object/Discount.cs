@@ -10,7 +10,7 @@ namespace Fun_Killerapp_S2.Object
     {
         private int discountid;
         private int amount;
-        private int date;
+        private DateTime date;
         private string comment;
 
         public int DiscountID
@@ -25,7 +25,7 @@ namespace Fun_Killerapp_S2.Object
             private set { amount = value; }
         }
 
-        public int Date
+        public DateTime Date
         {
             get { return date; }
             private set { date = value; }
@@ -37,7 +37,7 @@ namespace Fun_Killerapp_S2.Object
             private set { comment = value; }
         }
 
-        public Discount(int discountid, int amount, int date, string comment)
+        public Discount(int discountid, int amount, DateTime date, string comment)
         {
             this.discountid = discountid;
             this.amount = amount;

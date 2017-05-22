@@ -10,9 +10,9 @@ namespace Fun_Killerapp_S2.Object.Enum
     {
         public enum Orderstatus
         {
-            verzonden,
-            ordered,
-            verwerkt
+            Verzonden,
+            Ordered,
+            Verwerkt
         }
     }
 }

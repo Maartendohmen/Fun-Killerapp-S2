@@ -15,6 +15,7 @@ namespace Fun_Killerapp_S2
         ProductRepository productrepository = new ProductRepository();
         SupplierRepository supplierrepository = new SupplierRepository();
         CustomerRepository customerrepository = new CustomerRepository();
+        DiscountRepository discountrepository = new DiscountRepository();
 
         public void Savelasttimelogin(DateTime lasttimelogin, int crewid)
         {
@@ -31,10 +32,21 @@ namespace Fun_Killerapp_S2
             return orderrepository.GetOneOrder(productrepository.GetAllProducts(supplierrepository.GetAllSuppliers().Cast<object>().ToList(), new List<object>()).Cast<object>().ToList(), customerrepository.GetAllCustomers().Cast<object>().ToList(),orderid);
         }
 
+        public void SaveDiscounts(int amount, DateTime ending, string comment, List<Product> DiscountedProducts)
+        {
+            discountrepository.SaveDiscount(amount, ending, comment, DiscountedProducts);
+        }
+
         public List<Order> GetAllOrders()
         {
             List<Order> allorders = orderrepository.GetAllOrder(productrepository.GetAllProducts(supplierrepository.GetAllSuppliers().Cast<object>().ToList(), new List<object>()).Cast<object>().ToList(), customerrepository.GetAllCustomers().Cast<object>().ToList());
             return allorders;            
        }
+
+        public List<Product> GetAllProducts()
+        {
+            List<Product> allproducts = productrepository.GetAllProducts(supplierrepository.GetAllSuppliers().Cast<object>().ToList(), new List<object>());
+            return allproducts;
+        }
     }
 }

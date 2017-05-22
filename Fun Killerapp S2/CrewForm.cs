@@ -28,17 +28,9 @@ namespace Fun_Killerapp_S2
             lbLoggedinas.Text = "You're logged in as: " + currentcrewmember.Name;
             lblastloggedin.Text = "You last login was on: " + currentcrewmember.LasttimeLogin.ToString();
             Showorders(crewoverview.GetAllOrders());
+            Showproducts(crewoverview.GetAllProducts());
         }
 
-        private void btnaddsupplier_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnpriceupdate_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void CrewForm_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -49,11 +41,11 @@ namespace Fun_Killerapp_S2
         {
             int orderid = (int)Ordersgridview.SelectedRows[0].Cells[0].Value;
             Order AskedOrdered = crewoverview.GetOneOrder(orderid);
-            Productsgridview.Rows.Clear();
+            OrderedProductsgridview.Rows.Clear();
 
             foreach (Product p in AskedOrdered.Products)
             {
-                Productsgridview.Rows.Add(p.Name, "€" + p.Price + ",-", p.Categorie, p.Amount);
+                OrderedProductsgridview.Rows.Add(p.Name, "€" + p.Price + ",-", p.Categorie, p.Amount);
             }
         }
 
@@ -63,6 +55,19 @@ namespace Fun_Killerapp_S2
             {
                 Ordersgridview.Rows.Add(order.OrderID, order.Customer.Name, order.Dateordered, order.Status, "€ " + order.Totalprice + ",-");
             }
+        }
+
+        private void Showproducts(List<Product> products)
+        {
+            foreach (Product product in products)
+            {
+                Productsgridoverview.Rows.Add(product.Name, "€" + product.Price + ",-", product.Categorie, product.Amount);
+            }
+        }
+
+        private void btnaddDiscount_Click(object sender, EventArgs e)
+        {
+            if 
         }
     }
 }
