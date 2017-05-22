@@ -1,4 +1,5 @@
 ﻿using Fun_Killerapp_S2.Object;
+using Fun_Killerapp_S2.UI_Input_screens;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +16,7 @@ namespace Fun_Killerapp_S2
     {
         CrewOverview crewoverview = new CrewOverview();
         private Crew currentcrewmember;
+        List<Product> adddiscount = new List<Product>();
 
         public CrewForm(object type_User)
         {
@@ -61,13 +63,20 @@ namespace Fun_Killerapp_S2
         {
             foreach (Product product in products)
             {
-                Productsgridoverview.Rows.Add(product.Name, "€" + product.Price + ",-", product.Categorie, product.Amount);
+                Productsgridoverview.Rows.Add(product.ProductID, product.Name, "€" + product.Price + ",-", product.Categorie, product.Amount);
             }
         }
 
         private void btnaddDiscount_Click(object sender, EventArgs e)
         {
-            if 
+            Discountinput discountinput = new Discountinput(adddiscount);
+            discountinput.ShowDialog();
+        }
+
+        private void btnProductDiscount_Click(object sender, EventArgs e)
+        {
+            Product p = crewoverview.GetOneProduct((int)Productsgridoverview.SelectedRows[0].Cells[0].Value);
+            adddiscount.Add(p);
         }
     }
 }

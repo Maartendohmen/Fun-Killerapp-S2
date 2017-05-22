@@ -16,6 +16,7 @@ namespace Fun_Killerapp_S2
         UserRepository userrepository = new UserRepository();
         CustomerRepository customerrepository = new CustomerRepository();
         CrewRepository crewrepository = new CrewRepository();
+        DiscountRepository discountrepository = new DiscountRepository();
 
 
         public object GetCurrentUser(string emailadres, string password)
@@ -34,7 +35,7 @@ namespace Fun_Killerapp_S2
 
         public List<Product> GetAllProducts()
         {
-            List<Product> allproducts = productrepository.GetAllProducts(supplierrepository.GetAllSuppliers().Cast<object>().ToList(), new List<object>());
+            List<Product> allproducts = productrepository.GetAllProducts(supplierrepository.GetAllSuppliers().Cast<object>().ToList(),discountrepository.GetAllDiscount().Cast<object>().ToList());
             return allproducts;
         }
 

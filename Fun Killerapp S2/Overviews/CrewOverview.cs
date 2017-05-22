@@ -24,12 +24,12 @@ namespace Fun_Killerapp_S2
 
         public Product GetOneProduct(int ProductID)
         {
-            return productrepository.GetOneProduct(ProductID, supplierrepository.GetAllSuppliers().Cast<object>().ToList(), new List<object>());
+            return productrepository.GetOneProduct(ProductID, supplierrepository.GetAllSuppliers().Cast<object>().ToList(), discountrepository.GetAllDiscount().Cast<object>().ToList());
         }
 
         public Order GetOneOrder(int orderid)
         {
-            return orderrepository.GetOneOrder(productrepository.GetAllProducts(supplierrepository.GetAllSuppliers().Cast<object>().ToList(), new List<object>()).Cast<object>().ToList(), customerrepository.GetAllCustomers().Cast<object>().ToList(),orderid);
+            return orderrepository.GetOneOrder(productrepository.GetAllProducts(supplierrepository.GetAllSuppliers().Cast<object>().ToList(), discountrepository.GetAllDiscount().Cast<object>().ToList()).Cast<object>().ToList(), customerrepository.GetAllCustomers().Cast<object>().ToList(),orderid);
         }
 
         public void SaveDiscounts(int amount, DateTime ending, string comment, List<Product> DiscountedProducts)
@@ -39,13 +39,13 @@ namespace Fun_Killerapp_S2
 
         public List<Order> GetAllOrders()
         {
-            List<Order> allorders = orderrepository.GetAllOrder(productrepository.GetAllProducts(supplierrepository.GetAllSuppliers().Cast<object>().ToList(), new List<object>()).Cast<object>().ToList(), customerrepository.GetAllCustomers().Cast<object>().ToList());
+            List<Order> allorders = orderrepository.GetAllOrder(productrepository.GetAllProducts(supplierrepository.GetAllSuppliers().Cast<object>().ToList(), discountrepository.GetAllDiscount().Cast<object>().ToList()).Cast<object>().ToList(), customerrepository.GetAllCustomers().Cast<object>().ToList());
             return allorders;            
        }
 
         public List<Product> GetAllProducts()
         {
-            List<Product> allproducts = productrepository.GetAllProducts(supplierrepository.GetAllSuppliers().Cast<object>().ToList(), new List<object>());
+            List<Product> allproducts = productrepository.GetAllProducts(supplierrepository.GetAllSuppliers().Cast<object>().ToList(),discountrepository.GetAllDiscount().Cast<object>().ToList());
             return allproducts;
         }
     }

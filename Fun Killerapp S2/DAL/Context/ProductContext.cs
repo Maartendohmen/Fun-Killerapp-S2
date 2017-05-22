@@ -17,8 +17,6 @@ namespace Fun_Killerapp_S2
         public List<object> GetAll(List<object> allsuppliers, List<object> alldiscounts)
         {
             conn.Open();
-            List < Supplier > Supliers = allsuppliers.Cast<Supplier>().ToList();
-            List<Discount> Discounts = alldiscounts.Cast<Discount>().ToList();
 
             List<Product> products = new List<Product>();
             List<Discount> discounts = new List<Discount>();            
@@ -32,7 +30,7 @@ namespace Fun_Killerapp_S2
             {
                 while (reader.Read())
                 {
-                    foreach (Supplier sup in Supliers)
+                    foreach (Supplier sup in allsuppliers)
                     {
                         if (sup.SupplierID == Convert.ToInt32(reader["SupplierID"]))
                         {
@@ -63,7 +61,20 @@ namespace Fun_Killerapp_S2
                     products.Add(new Product(Convert.ToInt32(reader["ProductID"]), productsupplier, discounts, Convert.ToDecimal(reader["Price"]), reader["Name"].ToString(), productsoort, Convert.ToInt32(reader["Amount"])));
                 }
             }
-            conn.Close();
+            string adddiscounts = "SELECT Discount_Product.ProductID,Discount_Product.DiscountID from Discount_Product;";
+            SqlCommand AddDiscounts = new SqlCommand(adddiscounts, conn);
+
+            using (SqlDataReader reader = Getallproducts.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    //needs much word, Add discounts to list of products
+                }
+            }
+}
+
+
+                    conn.Close();
             return products.Cast<object>().ToList();
         }
 
