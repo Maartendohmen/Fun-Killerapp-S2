@@ -72,14 +72,16 @@ namespace Fun_Killerapp_S2
             List<Supplier> Suppliers = allsuppliers.Cast<Supplier>().ToList();
             List<Discount> Discounts = alldiscounts.Cast<Discount>().ToList();
 
-            string getoneproductquery = "SELECT ProductID, SupplierID, DiscountID, Price,Name,Catagorie,Amount FROM Product WHERE ProductID = @id";
+            string getoneproductquery = "SELECT ProductID, SupplierID, Price,Name,Catagorie,Amount FROM Product WHERE ProductID = @id";
             SqlCommand GetOneProduct = new SqlCommand(getoneproductquery, conn);
             GetOneProduct.Parameters.AddWithValue("id", id);
             List<Discount> discounts = new List<Discount>();
             Supplier productsupplier = new Supplier(-1, "", "");
             Productsoort productsoort = Productsoort.Boeken;
 
-            using (SqlDataReader reader =GetOneProduct.ExecuteReader())
+            conn.Open();
+
+            using (SqlDataReader reader = GetOneProduct.ExecuteReader())
             {
                 while (reader.Read())
                 {
@@ -111,8 +113,8 @@ namespace Fun_Killerapp_S2
                     {
                         productsoort = Productsoort.Voeding;
                     }
-
                     Product toadd = new Product(Convert.ToInt32(reader["ProductID"]), productsupplier, discounts, Convert.ToDecimal(reader["Price"]), reader["Name"].ToString(), productsoort, Convert.ToInt32(reader["Amount"]));
+                    conn.Close();
                     return toadd;
                 }
             }

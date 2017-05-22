@@ -53,6 +53,7 @@ namespace Fun_Killerapp_S2
                             current = cus;
                         }
                     }
+
                     Orders.Add(new Order(Convert.ToInt32(reader["OrderID"]), current ,DateTime.Parse(reader["Date"].ToString()),orderstatus,noproducts,Convert.ToDecimal(reader["Totalprice"])));
                 }
             }
@@ -62,22 +63,27 @@ namespace Fun_Killerapp_S2
 
         public object GetOne(List<object> allproducts, List<object> allcustomers, int id)
         {
-            List<Product> allproducten = allproducts.Cast<Product>().ToList();
-            List<Customer> Customers = allcustomers.Cast<Customer>().ToList();
-
-            List<Product> noproducts = new List<Product>();
             List<Order> Orders = new List<Order>();
+
+            //for new single order
+            DateTime dateordered = DateTime.Now;
+            decimal totalprice = 0;
             Orderstatus orderstatus = Orderstatus.ordered;
-            Customer current = new Customer(-1,"", "", -1);
+            Customer current = new Customer(-1, "", "", -1);
+            List<Product> EmptyList = new List<Product>();
 
             string querygetallorders = "SELECT OrderID,CustomerID,Date,Status,Totalprice FROM [Order] WHERE Orderid = @id";
             SqlCommand Getallorders = new SqlCommand(querygetallorders, conn);
             Getallorders.Parameters.AddWithValue("id", id);
 
+            conn.Open();
+
             using (SqlDataReader reader = Getallorders.ExecuteReader())
             {
                 while (reader.Read())
                 {
+                    dateordered = DateTime.Parse(reader["Date"].ToString());
+                    totalprice = Convert.ToDecimal(reader["Totalprice"]);
 
                     if (reader["Status"].ToString() == "Verzonden")
                     {
@@ -98,11 +104,27 @@ namespace Fun_Killerapp_S2
                             current = cus;
                         }
                     }
-                    Order toadd = (new Order(Convert.ToInt32(reader["OrderID"]), current, DateTime.Parse(reader["Date"].ToString()), orderstatus, noproducts, Convert.ToDecimal(reader["Totalprice"])));
-                    return toadd;
                 }
             }
-            return null;
+            string addproductstoorder = @"SELECT ProductID From [Order] inner join Orderregel on [Order].OrderID = Orderregel.OrderID where [Order].OrderID = @id;";
+            SqlCommand AddProductsToOrder = new SqlCommand(addproductstoorder, conn);
+            AddProductsToOrder.Parameters.AddWithValue("id", id);
+
+            using (SqlDataReader reader = AddProductsToOrder.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    foreach (Product p in allproducts)
+                    {
+                        if (p.ProductID ==  Convert.ToUInt32(reader["ProductID"]))
+                        {
+                            EmptyList.Add(p);
+                        }
+                    }
+                }
+            }
+            conn.Close();
+            return new Order(id, current, dateordered, orderstatus, EmptyList, totalprice);
         }
 
         public void Save(List<object> orderinput , int customerid)
@@ -129,6 +151,7 @@ namespace Fun_Killerapp_S2
             SaveOrder.Parameters.AddWithValue("id", customerid);
             SaveOrder.Parameters.AddWithValue("placedate", DateTime.Now);
             SaveOrder.ExecuteNonQuery();
+            conn.Close();
         }
     }
 }

@@ -21,6 +21,16 @@ namespace Fun_Killerapp_S2
             crewrepository.SaveLastlogin(lasttimelogin, crewid);
         }
 
+        public Product GetOneProduct(int ProductID)
+        {
+            return productrepository.GetOneProduct(ProductID, supplierrepository.GetAllSuppliers().Cast<object>().ToList(), new List<object>());
+        }
+
+        public Order GetOneOrder(int orderid)
+        {
+            return orderrepository.GetOneOrder(productrepository.GetAllProducts(supplierrepository.GetAllSuppliers().Cast<object>().ToList(), new List<object>()).Cast<object>().ToList(), customerrepository.GetAllCustomers().Cast<object>().ToList(),orderid);
+        }
+
         public List<Order> GetAllOrders()
         {
             List<Order> allorders = orderrepository.GetAllOrder(productrepository.GetAllProducts(supplierrepository.GetAllSuppliers().Cast<object>().ToList(), new List<object>()).Cast<object>().ToList(), customerrepository.GetAllCustomers().Cast<object>().ToList());

@@ -40,7 +40,13 @@
             this.DateOrdered = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Productsgridview = new System.Windows.Forms.DataGridView();
+            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categorie = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.Ordersgridview)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Productsgridview)).BeginInit();
             this.SuspendLayout();
             // 
             // lbproducts
@@ -99,6 +105,8 @@
             // 
             // Ordersgridview
             // 
+            this.Ordersgridview.AllowUserToAddRows = false;
+            this.Ordersgridview.AllowUserToDeleteRows = false;
             this.Ordersgridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Ordersgridview.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.OrderID,
@@ -106,41 +114,94 @@
             this.DateOrdered,
             this.Status,
             this.TotalPrice});
-            this.Ordersgridview.Location = new System.Drawing.Point(56, 482);
+            this.Ordersgridview.Location = new System.Drawing.Point(24, 387);
+            this.Ordersgridview.MultiSelect = false;
             this.Ordersgridview.Name = "Ordersgridview";
-            this.Ordersgridview.Size = new System.Drawing.Size(545, 279);
+            this.Ordersgridview.ReadOnly = true;
+            this.Ordersgridview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.Ordersgridview.Size = new System.Drawing.Size(561, 317);
             this.Ordersgridview.TabIndex = 9;
+            this.Ordersgridview.Click += new System.EventHandler(this.Ordersgridview_Click);
             // 
             // OrderID
             // 
             this.OrderID.HeaderText = "OrderID";
             this.OrderID.Name = "OrderID";
+            this.OrderID.ReadOnly = true;
             // 
             // Customer
             // 
             this.Customer.HeaderText = "Customer";
             this.Customer.Name = "Customer";
+            this.Customer.ReadOnly = true;
             // 
             // DateOrdered
             // 
             this.DateOrdered.HeaderText = "DateOrdered";
             this.DateOrdered.Name = "DateOrdered";
+            this.DateOrdered.ReadOnly = true;
             // 
             // Status
             // 
             this.Status.HeaderText = "Status";
             this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
             // 
             // TotalPrice
             // 
             this.TotalPrice.HeaderText = "TotalPrice";
             this.TotalPrice.Name = "TotalPrice";
+            this.TotalPrice.ReadOnly = true;
+            // 
+            // Productsgridview
+            // 
+            this.Productsgridview.AllowUserToAddRows = false;
+            this.Productsgridview.AllowUserToDeleteRows = false;
+            this.Productsgridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Productsgridview.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Name,
+            this.Price,
+            this.categorie,
+            this.Stock});
+            this.Productsgridview.Location = new System.Drawing.Point(642, 373);
+            this.Productsgridview.MultiSelect = false;
+            this.Productsgridview.Name = "Productsgridview";
+            this.Productsgridview.ReadOnly = true;
+            this.Productsgridview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.Productsgridview.Size = new System.Drawing.Size(422, 331);
+            this.Productsgridview.TabIndex = 11;
+            // 
+            // Name
+            // 
+            this.Name.HeaderText = "Name";
+            this.Name.Name = "Name";
+            this.Name.ReadOnly = true;
+            // 
+            // Price
+            // 
+            this.Price.HeaderText = "Price";
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
+            // 
+            // categorie
+            // 
+            this.categorie.HeaderText = "Categorie";
+            this.categorie.Name = "categorie";
+            this.categorie.ReadOnly = true;
+            // 
+            // Stock
+            // 
+            this.Stock.HeaderText = "Stock";
+            this.Stock.Name = "Stock";
+            this.Stock.ReadOnly = true;
+            this.Stock.Width = 78;
             // 
             // CrewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1584, 821);
+            this.Controls.Add(this.Productsgridview);
             this.Controls.Add(this.Ordersgridview);
             this.Controls.Add(this.lblastloggedin);
             this.Controls.Add(this.lbLoggedinas);
@@ -148,12 +209,12 @@
             this.Controls.Add(this.btnaddsupplier);
             this.Controls.Add(this.lbsuppliers);
             this.Controls.Add(this.lbproducts);
-            this.Name = "CrewForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Crew";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CrewForm_FormClosing);
             this.Load += new System.EventHandler(this.Crew_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Ordersgridview)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Productsgridview)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -173,5 +234,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DateOrdered;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalPrice;
+        private System.Windows.Forms.DataGridView Productsgridview;
+        private new System.Windows.Forms.DataGridViewTextBoxColumn Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn categorie;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Stock;
     }
 }

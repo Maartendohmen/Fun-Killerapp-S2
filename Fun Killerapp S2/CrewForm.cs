@@ -45,12 +45,23 @@ namespace Fun_Killerapp_S2
             crewoverview.Savelasttimelogin(DateTime.Now, currentcrewmember.CrewID);
         }
 
+        private void Ordersgridview_Click(object sender, EventArgs e)
+        {
+            int orderid = (int)Ordersgridview.SelectedRows[0].Cells[0].Value;
+            Order AskedOrdered = crewoverview.GetOneOrder(orderid);
+            Productsgridview.Rows.Clear();
+
+            foreach (Product p in AskedOrdered.Products)
+            {
+                Productsgridview.Rows.Add(p.Name, "€" + p.Price + ",-", p.Categorie, p.Amount);
+            }
+        }
 
         private void Showorders(List<Order> Orders)
         {
             foreach (Order order in Orders)
             {
-                Ordersgridview.Rows.Add(order.OrderID, order.Customer.Name, order.Dateordered, order.Status, order.Totalprice);
+                Ordersgridview.Rows.Add(order.OrderID, order.Customer.Name, order.Dateordered, order.Status, "€ " + order.Totalprice + ",-");
             }
         }
     }
