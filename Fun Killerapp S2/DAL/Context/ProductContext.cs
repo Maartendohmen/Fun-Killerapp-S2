@@ -1,5 +1,7 @@
 ﻿using Fun_Killerapp_S2.DAL;
+using Fun_Killerapp_S2.DAL.Context;
 using Fun_Killerapp_S2.DAL.Interface;
+using Fun_Killerapp_S2.DAL.Logic;
 using Fun_Killerapp_S2.Object;
 using Fun_Killerapp_S2.Object.Enum;
 using System;
@@ -18,10 +20,8 @@ namespace Fun_Killerapp_S2
         {
             conn.Open();
 
-            List<Product> products = new List<Product>();
-            List<Discount> discounts = new List<Discount>();            
+            List<Product> products = new List<Product>();            
             Supplier productsupplier = new Supplier(-1,"","");
-            Productsoort productsoort = Productsoort.Boeken;
 
             string querygetallproducts = "SELECT ProductID, SupplierID, Price,Name,Catagorie,Amount FROM Product";
             SqlCommand Getallproducts = new SqlCommand(querygetallproducts, conn);
@@ -37,58 +37,44 @@ namespace Fun_Killerapp_S2
                             productsupplier = sup;
                         }
                     }
-
-                    if (reader["Catagorie"].ToString() == "Schoenen")
-                    {
-                        productsoort = Productsoort.Schoenen;
-                    }
-                    else if (reader["Catagorie"].ToString() == "Camera")
-                    {
-                        productsoort = Productsoort.Camera;
-                    }
-                    else if (reader["Catagorie"].ToString() == "Spellen")
-                    {
-                        productsoort = Productsoort.Spellen;
-                    }
-                    else if (reader["Catagorie"].ToString() == "Boeken")
-                    {
-                        productsoort = Productsoort.Boeken;
-                    }
-                    else if (reader["Catagorie"].ToString() == "Voeding")
-                    {
-                        productsoort = Productsoort.Voeding;
-                    }
-                    products.Add(new Product(Convert.ToInt32(reader["ProductID"]), productsupplier, discounts, Convert.ToDecimal(reader["Price"]), reader["Name"].ToString(), productsoort, Convert.ToInt32(reader["Amount"])));
+                    ProductCatagorie.Productsoort productsoort = (Productsoort)Enum.Parse(typeof(Productsoort), reader["Catagorie"].ToString(), true);
+                    products.Add(new Product(Convert.ToInt32(reader["ProductID"]), productsupplier, Convert.ToDecimal(reader["Price"]), reader["Name"].ToString(), productsoort, Convert.ToInt32(reader["Amount"])));
                 }
             }
             string adddiscounts = "SELECT Discount_Product.ProductID,Discount_Product.DiscountID from Discount_Product;";
             SqlCommand AddDiscounts = new SqlCommand(adddiscounts, conn);
 
-            using (SqlDataReader reader = Getallproducts.ExecuteReader())
+            using (SqlDataReader reader = AddDiscounts.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    //needs much word, Add discounts to list of products
+                    foreach (Product testje in products)
+                    {
+                        if (testje.ProductID == Convert.ToInt32(reader["ProductID"]))
+                        {
+                            foreach (Discount dis in alldiscounts)
+                            {
+                                if (dis.DiscountID == Convert.ToInt32(reader["DiscountID"]))
+                                {
+                                    testje.Discount.Add(dis);
+                                }
+                            }
+                        }
+                    }
                 }
             }
-}
 
-
-                    conn.Close();
+            conn.Close();
             return products.Cast<object>().ToList();
         }
 
         public object GetOne(int id, List<object> allsuppliers, List<object> alldiscounts)
         {
-            List<Supplier> Suppliers = allsuppliers.Cast<Supplier>().ToList();
-            List<Discount> Discounts = alldiscounts.Cast<Discount>().ToList();
-
+            Product toadd = new Product(-1, new Supplier(-1, "", ""), -2, "", Productsoort.Boeken, -1);
             string getoneproductquery = "SELECT ProductID, SupplierID, Price,Name,Catagorie,Amount FROM Product WHERE ProductID = @id";
             SqlCommand GetOneProduct = new SqlCommand(getoneproductquery, conn);
             GetOneProduct.Parameters.AddWithValue("id", id);
-            List<Discount> discounts = new List<Discount>();
             Supplier productsupplier = new Supplier(-1, "", "");
-            Productsoort productsoort = Productsoort.Boeken;
 
             conn.Open();
 
@@ -103,33 +89,29 @@ namespace Fun_Killerapp_S2
                             productsupplier = sup;
                         }
                     }
-
-                    if (reader["Catagorie"].ToString() == "Schoenen")
-                    {
-                        productsoort = Productsoort.Schoenen;
-                    }
-                    else if (reader["Catagorie"].ToString() == "Camera")
-                    {
-                        productsoort = Productsoort.Camera;
-                    }
-                    else if (reader["Catagorie"].ToString() == "Spellen")
-                    {
-                        productsoort = Productsoort.Spellen;
-                    }
-                    else if (reader["Catagorie"].ToString() == "Boeken")
-                    {
-                        productsoort = Productsoort.Boeken;
-                    }
-                    else if (reader["Catagorie"].ToString() == "Voeding")
-                    {
-                        productsoort = Productsoort.Voeding;
-                    }
-                    Product toadd = new Product(Convert.ToInt32(reader["ProductID"]), productsupplier, discounts, Convert.ToDecimal(reader["Price"]), reader["Name"].ToString(), productsoort, Convert.ToInt32(reader["Amount"]));
-                    conn.Close();
-                    return toadd;
+                    ProductCatagorie.Productsoort productsoort = (Productsoort)Enum.Parse(typeof(Productsoort), reader["Catagorie"].ToString(), true);
+                    toadd = new Product(Convert.ToInt32(reader["ProductID"]), productsupplier, Convert.ToDecimal(reader["Price"]), reader["Name"].ToString(), productsoort, Convert.ToInt32(reader["Amount"]));
                 }
             }
-            return null;
+
+            string adddiscounts = "SELECT Discount_Product.ProductID,Discount_Product.DiscountID from Discount_Product where ProductID = @id;";
+            SqlCommand AddDiscounts = new SqlCommand(adddiscounts, conn);
+            AddDiscounts.Parameters.AddWithValue("id", id);
+
+            using (SqlDataReader reader = AddDiscounts.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                            foreach (Discount dis in alldiscounts)
+                            {
+                                if (dis.DiscountID == Convert.ToInt32(reader["DiscountID"]))
+                                {
+                                    toadd.Discount.Add(dis);
+                                }
+                            }
+                 }
+            }
+            return toadd;
         }
     }
 }

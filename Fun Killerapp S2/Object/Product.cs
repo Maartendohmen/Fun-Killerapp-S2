@@ -60,11 +60,11 @@ namespace Fun_Killerapp_S2
             private set { amount = value; }
         }
 
-        public Product(int productid, Supplier supplier, List<Discount> discount,decimal price,string name, ProductCatagorie.Productsoort categorie, int amount)
+        public Product(int productid, Supplier supplier,decimal price,string name, ProductCatagorie.Productsoort categorie, int amount)
         {
             this.productid = productid;
             this.supplier = supplier;
-            this.discount = discount;
+            this.discount = new List<Object.Discount>();
             this.price = price;
             this.name = name;
             this.categorie = categorie;
