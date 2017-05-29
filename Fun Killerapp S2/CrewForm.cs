@@ -31,6 +31,7 @@ namespace Fun_Killerapp_S2
             lblastloggedin.Text = "You last login was on: " + currentcrewmember.LasttimeLogin.ToString();
             Showorders(crewoverview.GetAllOrders());
             Showproducts(crewoverview.GetAllProducts());
+            Showdiscounts(crewoverview.GetAllDiscounts());
         }
 
 
@@ -51,6 +52,37 @@ namespace Fun_Killerapp_S2
             }
         }
 
+        private void btnaddDiscount_Click(object sender, EventArgs e)
+        {
+            Discountinput discountinput = new Discountinput(adddiscount);
+            discountinput.ShowDialog();
+            Productsgridoverview.Rows.Clear();
+            Discountgridoverview.Rows.Clear();
+            Showdiscounts(crewoverview.GetAllDiscounts());
+            Showproducts(crewoverview.GetAllProducts());
+        }
+
+        private void btnProductDiscount_Click(object sender, EventArgs e)
+        {
+            Product p = crewoverview.GetOneProduct((int)Productsgridoverview.SelectedRows[0].Cells[0].Value);
+            adddiscount.Add(p);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         private void Showorders(List<Order> Orders)
         {
             foreach (Order order in Orders)
@@ -63,20 +95,23 @@ namespace Fun_Killerapp_S2
         {
             foreach (Product product in products)
             {
-                Productsgridoverview.Rows.Add(product.ProductID, product.Name, "€" + product.Price + ",-", product.Categorie, product.Amount);
+                int totaalafprijs = 0;
+                {
+                    foreach (Discount discount in product.Discount)
+                    {
+                        totaalafprijs = totaalafprijs + discount.Amount;
+                    }
+                }
+                Productsgridoverview.Rows.Add(product.ProductID, product.Name, "€" + product.Price + ",-", product.Categorie, product.Amount, "-" + totaalafprijs + "%");
             }
         }
 
-        private void btnaddDiscount_Click(object sender, EventArgs e)
+        private void Showdiscounts(List<Discount> discounts)
         {
-            Discountinput discountinput = new Discountinput(adddiscount);
-            discountinput.ShowDialog();
-        }
-
-        private void btnProductDiscount_Click(object sender, EventArgs e)
-        {
-            Product p = crewoverview.GetOneProduct((int)Productsgridoverview.SelectedRows[0].Cells[0].Value);
-            adddiscount.Add(p);
+            foreach (Discount dis in discounts)
+            {
+                Discountgridoverview.Rows.Add(dis.DiscountID, dis.Amount, dis.Date, dis.Comment);
+            }
         }
     }
 }

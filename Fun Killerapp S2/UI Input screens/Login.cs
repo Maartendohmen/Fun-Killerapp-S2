@@ -40,6 +40,19 @@ namespace Fun_Killerapp_S2
 
         }
 
+        private void tbUsername_TextChanged(object sender, EventArgs e)
+        {
+            if (tbUsername.Text == "m")
+            {
+                tbUsername.Text = "maartendohmen@gmail.com";
+                tbPassword.Text = "Maarten";
+            }
+            else if (tbUsername.Text == "H")
+            {
+                tbUsername.Text = "Harry@gmail.com";
+                tbPassword.Text = "Harry";
+            }
+        }
     }
 }
  

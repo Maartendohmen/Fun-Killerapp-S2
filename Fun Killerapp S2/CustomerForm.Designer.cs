@@ -41,6 +41,7 @@
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categorie = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.Productsgridview)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,7 +73,7 @@
             // 
             // btnaddtocart
             // 
-            this.btnaddtocart.Location = new System.Drawing.Point(479, 76);
+            this.btnaddtocart.Location = new System.Drawing.Point(546, 63);
             this.btnaddtocart.Name = "btnaddtocart";
             this.btnaddtocart.Size = new System.Drawing.Size(209, 26);
             this.btnaddtocart.TabIndex = 4;
@@ -82,7 +83,7 @@
             // 
             // btnclearcart
             // 
-            this.btnclearcart.Location = new System.Drawing.Point(479, 175);
+            this.btnclearcart.Location = new System.Drawing.Point(546, 162);
             this.btnclearcart.Name = "btnclearcart";
             this.btnclearcart.Size = new System.Drawing.Size(209, 26);
             this.btnclearcart.TabIndex = 5;
@@ -101,7 +102,7 @@
             // 
             // btnplaceorder
             // 
-            this.btnplaceorder.Location = new System.Drawing.Point(479, 379);
+            this.btnplaceorder.Location = new System.Drawing.Point(546, 366);
             this.btnplaceorder.Name = "btnplaceorder";
             this.btnplaceorder.Size = new System.Drawing.Size(209, 26);
             this.btnplaceorder.TabIndex = 8;
@@ -111,7 +112,7 @@
             // 
             // btnShowcart
             // 
-            this.btnShowcart.Location = new System.Drawing.Point(479, 125);
+            this.btnShowcart.Location = new System.Drawing.Point(546, 112);
             this.btnShowcart.Name = "btnShowcart";
             this.btnShowcart.Size = new System.Drawing.Size(209, 26);
             this.btnShowcart.TabIndex = 9;
@@ -128,13 +129,14 @@
             this.Name,
             this.Price,
             this.categorie,
-            this.Stock});
-            this.Productsgridview.Location = new System.Drawing.Point(33, 65);
+            this.Stock,
+            this.Discount});
+            this.Productsgridview.Location = new System.Drawing.Point(12, 63);
             this.Productsgridview.MultiSelect = false;
             this.Productsgridview.Name = "Productsgridview";
             this.Productsgridview.ReadOnly = true;
             this.Productsgridview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Productsgridview.Size = new System.Drawing.Size(422, 331);
+            this.Productsgridview.Size = new System.Drawing.Size(521, 331);
             this.Productsgridview.TabIndex = 10;
             // 
             // Name
@@ -162,11 +164,17 @@
             this.Stock.ReadOnly = true;
             this.Stock.Width = 78;
             // 
+            // Discount
+            // 
+            this.Discount.HeaderText = "Discount";
+            this.Discount.Name = "Discount";
+            this.Discount.ReadOnly = true;
+            // 
             // CustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(721, 445);
+            this.ClientSize = new System.Drawing.Size(783, 445);
             this.Controls.Add(this.Productsgridview);
             this.Controls.Add(this.btnShowcart);
             this.Controls.Add(this.btnplaceorder);
@@ -199,5 +207,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn categorie;
         private System.Windows.Forms.DataGridViewTextBoxColumn Stock;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Discount;
     }
 }

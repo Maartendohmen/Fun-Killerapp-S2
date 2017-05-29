@@ -101,7 +101,14 @@ namespace Fun_Killerapp_S2
         {
             foreach (Product product in products)
             {
-                Productsgridview.Rows.Add(product.Name, "€" + product.Price + ",-", product.Categorie, product.Amount);
+                int totaalafprijs = 0;
+                {
+                    foreach (Discount discount in product.Discount)
+                    {
+                        totaalafprijs = totaalafprijs + discount.Amount;
+                    }
+                }
+                Productsgridview.Rows.Add(product.Name, "€" + product.Price + ",-", product.Categorie, product.Amount, "-" + totaalafprijs + "%");
             }
         }
 

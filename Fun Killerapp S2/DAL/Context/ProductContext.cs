@@ -111,6 +111,7 @@ namespace Fun_Killerapp_S2
                             }
                  }
             }
+            conn.Close();
             return toadd;
         }
     }

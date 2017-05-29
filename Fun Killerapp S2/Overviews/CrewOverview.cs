@@ -48,5 +48,11 @@ namespace Fun_Killerapp_S2
             List<Product> allproducts = productrepository.GetAllProducts(supplierrepository.GetAllSuppliers().Cast<object>().ToList(),discountrepository.GetAllDiscount().Cast<object>().ToList());
             return allproducts;
         }
+
+        public List<Discount> GetAllDiscounts()
+        {
+            List<Discount> alldiscounts = discountrepository.GetAllDiscount();
+            return alldiscounts;
+        }
     }
 }

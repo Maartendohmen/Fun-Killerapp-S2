@@ -47,18 +47,18 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnaddDiscount = new System.Windows.Forms.Button();
             this.btnProductDiscount = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Discountgridoverview = new System.Windows.Forms.DataGridView();
+            this.DiscountID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EndDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.Ordersgridview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OrderedProductsgridview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Productsgridoverview)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Discountgridoverview)).BeginInit();
             this.SuspendLayout();
             // 
             // lbLoggedinas
@@ -182,13 +182,14 @@
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4});
-            this.Productsgridoverview.Location = new System.Drawing.Point(687, 25);
+            this.dataGridViewTextBoxColumn4,
+            this.Discount});
+            this.Productsgridoverview.Location = new System.Drawing.Point(593, 12);
             this.Productsgridoverview.MultiSelect = false;
             this.Productsgridoverview.Name = "Productsgridoverview";
             this.Productsgridoverview.ReadOnly = true;
             this.Productsgridoverview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Productsgridoverview.Size = new System.Drawing.Size(525, 331);
+            this.Productsgridoverview.Size = new System.Drawing.Size(622, 331);
             this.Productsgridoverview.TabIndex = 12;
             // 
             // ProductID
@@ -222,6 +223,12 @@
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             this.dataGridViewTextBoxColumn4.Width = 78;
             // 
+            // Discount
+            // 
+            this.Discount.HeaderText = "Discount";
+            this.Discount.Name = "Discount";
+            this.Discount.ReadOnly = true;
+            // 
             // btnaddDiscount
             // 
             this.btnaddDiscount.Location = new System.Drawing.Point(1349, 238);
@@ -242,62 +249,54 @@
             this.btnProductDiscount.UseVisualStyleBackColor = true;
             this.btnProductDiscount.Click += new System.EventHandler(this.btnProductDiscount_Click);
             // 
-            // dataGridView1
+            // Discountgridoverview
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn8,
-            this.dataGridViewTextBoxColumn9});
-            this.dataGridView1.Location = new System.Drawing.Point(37, 25);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(525, 331);
-            this.dataGridView1.TabIndex = 15;
+            this.Discountgridoverview.AllowUserToAddRows = false;
+            this.Discountgridoverview.AllowUserToDeleteRows = false;
+            this.Discountgridoverview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Discountgridoverview.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.DiscountID,
+            this.Amount,
+            this.EndDate,
+            this.Comment});
+            this.Discountgridoverview.Location = new System.Drawing.Point(53, 25);
+            this.Discountgridoverview.MultiSelect = false;
+            this.Discountgridoverview.Name = "Discountgridoverview";
+            this.Discountgridoverview.ReadOnly = true;
+            this.Discountgridoverview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.Discountgridoverview.Size = new System.Drawing.Size(444, 331);
+            this.Discountgridoverview.TabIndex = 15;
             // 
-            // dataGridViewTextBoxColumn5
+            // DiscountID
             // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "ProductID";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.DiscountID.HeaderText = "DiscountID";
+            this.DiscountID.Name = "DiscountID";
+            this.DiscountID.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn6
+            // Amount
             // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "Name";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.Amount.HeaderText = "Amount";
+            this.Amount.Name = "Amount";
+            this.Amount.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn7
+            // EndDate
             // 
-            this.dataGridViewTextBoxColumn7.HeaderText = "Price";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.EndDate.HeaderText = "End-Date";
+            this.EndDate.Name = "EndDate";
+            this.EndDate.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn8
+            // Comment
             // 
-            this.dataGridViewTextBoxColumn8.HeaderText = "Categorie";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.HeaderText = "Stock";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
-            this.dataGridViewTextBoxColumn9.Width = 78;
+            this.Comment.HeaderText = "Comment";
+            this.Comment.Name = "Comment";
+            this.Comment.ReadOnly = true;
             // 
             // CrewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1584, 821);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.Discountgridoverview);
             this.Controls.Add(this.btnProductDiscount);
             this.Controls.Add(this.btnaddDiscount);
             this.Controls.Add(this.Productsgridoverview);
@@ -312,7 +311,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Ordersgridview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OrderedProductsgridview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Productsgridoverview)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Discountgridoverview)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -340,11 +339,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridView Discountgridoverview;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Discount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DiscountID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EndDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Comment;
     }
 }
