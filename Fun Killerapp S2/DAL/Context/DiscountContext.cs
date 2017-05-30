@@ -77,5 +77,16 @@ namespace Fun_Killerapp_S2.DAL.Context
             SaveDiscount.ExecuteNonQuery();
             conn.Close();
         }
+
+        public void Delete(int discountID)
+        {
+            string deletediscounts = "DeleteDiscount";
+            SqlCommand DeleteDiscount = new SqlCommand(deletediscounts, conn);
+            DeleteDiscount.CommandType = CommandType.StoredProcedure;
+            DeleteDiscount.Parameters.AddWithValue("DiscountID", discountID);
+            conn.Open();
+            DeleteDiscount.ExecuteNonQuery();
+            conn.Close();
+        }
     }
 }

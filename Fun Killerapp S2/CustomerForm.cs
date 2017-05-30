@@ -68,6 +68,8 @@ namespace Fun_Killerapp_S2
         private void btnplaceorder_Click(object sender, EventArgs e)
         {
             customeroverview.placeorder(shopcart, currentcustomer.CustomerID);
+            Productsgridview.Rows.Clear();
+            Showproducts(customeroverview.GetAllProducts());
         }
 
         private void btnShowcart_Click(object sender, EventArgs e)

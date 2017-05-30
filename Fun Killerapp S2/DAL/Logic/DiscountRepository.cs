@@ -33,5 +33,10 @@ namespace Fun_Killerapp_S2.DAL.Logic
             List<object> discountedproduct = Discountedproducts.Cast<object>().ToList();
             context.Save(amount, ending, comment, discountedproduct);
         }  
+
+        public void DeleteDiscount(int discountID)
+        {
+            context.Delete(discountID);
+        }
     }
 }

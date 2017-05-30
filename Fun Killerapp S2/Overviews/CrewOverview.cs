@@ -54,5 +54,11 @@ namespace Fun_Killerapp_S2
             List<Discount> alldiscounts = discountrepository.GetAllDiscount();
             return alldiscounts;
         }
+
+        public void DeleteDiscount(int discountID)
+        {
+            discountrepository.DeleteDiscount(discountID);
+        }
+        
     }
 }

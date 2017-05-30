@@ -110,8 +110,18 @@ namespace Fun_Killerapp_S2
         {
             foreach (Discount dis in discounts)
             {
-                Discountgridoverview.Rows.Add(dis.DiscountID, dis.Amount, dis.Date, dis.Comment);
+                Discountgridoverview.Rows.Add(dis.DiscountID, dis.Amount + "%", dis.Date, dis.Comment);
             }
+        }
+
+        private void btnremovediscount_Click(object sender, EventArgs e)
+        {
+            int discountid = (int)Discountgridoverview.SelectedRows[0].Cells[0].Value;
+            crewoverview.DeleteDiscount(discountid);
+            Productsgridoverview.Rows.Clear();
+            Discountgridoverview.Rows.Clear();
+            Showdiscounts(crewoverview.GetAllDiscounts());
+            Showproducts(crewoverview.GetAllProducts());
         }
     }
 }
