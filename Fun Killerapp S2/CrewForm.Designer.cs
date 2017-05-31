@@ -316,7 +316,6 @@
             this.Controls.Add(this.Ordersgridview);
             this.Controls.Add(this.lblastloggedin);
             this.Controls.Add(this.lbLoggedinas);
-            this.Name = "CrewForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Crew";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CrewForm_FormClosing);

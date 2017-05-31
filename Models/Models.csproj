@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{758CFCFE-6821-48EF-B38B-8B1B66DC3AB2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Models</RootNamespace>
+    <AssemblyName>Models</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DAL\Connectionstring.cs" />
+    <Compile Include="DAL\Context\CrewContext.cs" />
+    <Compile Include="DAL\Context\CustomerContext.cs" />
+    <Compile Include="DAL\Context\DiscountContext.cs" />
+    <Compile Include="DAL\Context\OrderContext.cs" />
+    <Compile Include="DAL\Context\ProductContext.cs" />
+    <Compile Include="DAL\Context\SupplierContext.cs" />
+    <Compile Include="DAL\Context\UserContext.cs" />
+    <Compile Include="DAL\Interface\ICrew.cs" />
+    <Compile Include="DAL\Interface\IDiscounts.cs" />
+    <Compile Include="DAL\Interface\IMain.cs" />
+    <Compile Include="DAL\Interface\IOrder.cs" />
+    <Compile Include="DAL\Interface\IProduct.cs" />
+    <Compile Include="DAL\Interface\IUser.cs" />
+    <Compile Include="DAL\Logic\CrewRepository.cs" />
+    <Compile Include="DAL\Logic\CustomerRepository.cs" />
+    <Compile Include="DAL\Logic\DiscountRepository.cs" />
+    <Compile Include="DAL\Logic\OrderRepository.cs" />
+    <Compile Include="DAL\Logic\ProductRepository.cs" />
+    <Compile Include="DAL\Logic\SupplierRepository.cs" />
+    <Compile Include="DAL\Logic\UserRepository.cs" />
+    <Compile Include="Object\Crew.cs" />
+    <Compile Include="Object\Customer.cs" />
+    <Compile Include="Object\Discount.cs" />
+    <Compile Include="Object\Enum\OrderStatus.cs" />
+    <Compile Include="Object\Enum\ProductCatagorie.cs" />
+    <Compile Include="Object\Order.cs" />
+    <Compile Include="Object\Product.cs" />
+    <Compile Include="Object\Supplier.cs" />
+    <Compile Include="Object\User.cs" />
+    <Compile Include="Overviews\CrewOverview.cs" />
+    <Compile Include="Overviews\CustomerOverview.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
