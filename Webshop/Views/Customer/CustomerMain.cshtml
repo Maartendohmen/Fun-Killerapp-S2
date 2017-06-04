@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "CustomerMain";
+}
+
+@{ 
+    var Currentcustomer = ViewBag.CurrenCustomer;
+}
+
+<div class="row">
+    <!--need to add bootstrap scaling-->
+<p>You're logged in as: @Currentcustomer.Name</p>
+<p>You have @Enumerable.Count(ViewBag.cartproducts) products in you're cart</p> <button class="btn btn-info">Show Cart-content</button>
+</div>
+
+<div class="row">
+    <!--need to add bootstrap scaling-->
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Catagorie</th>
+                <th>Stock</th>
+                <th>Discount</th>
+            </tr>
+        </thead>
+        <tbody>
+
+     @foreach (var product in ViewBag.allproducts)
+     {
+         int totaalafprijs = 0;
+         foreach (var discount in product.Discount)
+         {
+             totaalafprijs = totaalafprijs + discount.Amount;
+         }
+
+         <tr>
+             <td>@product.Name</td>
+             <td>€@product.Price,-</td>
+             <td>@product.Categorie</td>
+             <td>@product.Amount</td>
+             <td>-@totaalafprijs %</td>
+             <td><form method="post"><button type="submit" class="btn btn-primary" value="@product.Name" name="ProductNameInput">Order</button></form></td>
+         </tr>
+     }
+            </tbody>
+    </table>
+</div>

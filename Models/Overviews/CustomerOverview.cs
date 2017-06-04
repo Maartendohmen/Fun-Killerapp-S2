@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Fun_Killerapp_S2
 {
-    class CustomerOverview
+    public  class CustomerOverview
     {
         OrderRepository orderrepository = new OrderRepository();
         ProductRepository productrepository = new ProductRepository();
@@ -22,14 +22,21 @@ namespace Fun_Killerapp_S2
         public object GetCurrentUser(string emailadres, string password)
         {
             User currentuser = (User)userrepository.GetOneUser(emailadres, password);
-            
-            if (currentuser.CustomerID != -1)
+
+            if (currentuser != null)
             {
-                return customerrepository.GetOneCustomer(currentuser.CustomerID);
+                if (currentuser.CustomerID != -1)
+                {
+                    return customerrepository.GetOneCustomer(currentuser.CustomerID);
+                }
+                else
+                {
+                    return crewrepository.GetOneCrew(currentuser.CrewID);
+                }
             }
             else
             {
-                return crewrepository.GetOneCrew(currentuser.CrewID);
+                return null;
             }
         }
 

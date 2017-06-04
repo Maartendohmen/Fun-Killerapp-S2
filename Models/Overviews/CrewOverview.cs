@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Fun_Killerapp_S2
 {
-    class CrewOverview 
+    public class CrewOverview 
     {
         CrewRepository crewrepository = new CrewRepository();
         OrderRepository orderrepository = new OrderRepository();
