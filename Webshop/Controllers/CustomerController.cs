@@ -85,6 +85,7 @@ namespace Webshop.Controllers
             else if (model.Clearcart != null)
             {
                 shopcart.Clear();
+                totalprice = 0;
             }
             return View(CustomerMain());
         }
