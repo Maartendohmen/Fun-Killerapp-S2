@@ -11,5 +11,17 @@ namespace Webshop.Models
         [Required]
         [Display(Name = "ProductNameInput")]
         public string ProductNameInput { get; set; }
+
+        [Display(Name = "ConfirmOrder")]
+        public string ConfirmOrder { get; set; }
+
+        [Display(Name = "Showcart")]
+        public string Showcart { get; set; }
+
+        [Display(Name = "Searchinput")]
+        public string Searchinput { get; set; }
+
+        [Display(Name = "Clearcart")]
+        public string Clearcart { get; set; }
     }
 }
