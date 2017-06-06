@@ -3,5 +3,144 @@
     ViewBag.Title = "CrewMain";
 }
 
-<h2>CrewMain</h2>
+@{
+    var Currentcrew = ViewBag.CurrentCrew;
+}
 
+<link type="text/css" href="~/Content/TableCrew.css" rel="stylesheet" />
+
+<div class="row">
+<div class="col-md-3 col-md-offset-9">
+<p>You're Logged in as  : @Currentcrew.Name</p>
+</div>
+</div>
+
+<div class="row">
+  <div class="col-md-5">      
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>DiscountID</th>
+                    <th>Amount</th>
+                    <th>Enddate</th>
+                    <th>Comment</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var discount in ViewBag.Alldiscounts)
+                {
+                <tr>
+                    <td>discount.DiscountID</td>
+                    <td>discount.Amount</td>
+                    <td>discount.Date</td>
+                    <td>discount.Comment</td>
+                </tr>
+                }
+            </tbody>
+
+        </table>
+</div>
+
+        <div class="col-md-7">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Catagorie</th>
+                        <th>Stock</th>
+                        <th>Discount</th>
+                        <th>Order</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var product in ViewBag.Allproducts)
+                    {
+                        int totaalafprijs = 0;
+                        foreach (var discount in product.Discount)
+                        {
+                            totaalafprijs = totaalafprijs + discount.Amount;
+                        }
+
+                        <tr>
+                            <td>@product.Name</td>
+                            <td>€@product.Price,-</td>
+                            <td>@product.Categorie</td>
+                            <td>@product.Amount</td>
+                            <td>-@totaalafprijs %</td>
+                            <td><form method="post"><button type="submit" class="btn btn-primary" value="@product.Name" name="ProductNameInput">Discount</button></form></td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+
+<div class="row">
+    <div class="col-md-6">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>OrderID</th>
+                    <th>Customer</th>
+                    <th>Dateordered</th>
+                    <th>Status</th>
+                    <th>Totalprice</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var order in ViewBag.Allorders)
+                {
+                    <tr>
+                        <td>@order.OrderID</td>
+                        <td>@order.Customer.Name</td>
+                        <td>@order.Dateordered</td>
+                        <td>@order.Status</td>
+                        <td>€@order.Totalprice,-</td>
+                        <td><form method="post"><button type="submit" class="btn btn-primary" value="@order.OrderID" name="OrderInput">Show</button></form></td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+ 
+    <div class="col col-md-6">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Categorie</th>
+                    <th>Stock</th>
+                </tr>
+            </thead>
+
+
+            @if (ViewBag.Oneorder != null)
+            {
+            <tbody>
+                @foreach (var product in ViewBag.Oneorder)
+                {
+                    <tr>
+                        <td>@product.Name</td>
+                        <td>@product.Price</td>
+                        <td>@product.Categorie</td>
+                        <td>@product.Amount</td>                       
+                    </tr>
+                }
+            </tbody>
+            }
+
+        </table>
+
+    </div>
+
+</div>

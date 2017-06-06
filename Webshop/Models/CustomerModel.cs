@@ -1,18 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
 namespace Webshop.Models
 {
-    public class CustomerModel
+    public class Customermodel
     {
-        public int CustomerID{ get; set; }
+        [Required]
+        [Display(Name = "ProductNameInput")]
+        public string ProductNameInput { get; set; }
 
-        public string Name { get; set; }
+        [Display(Name = "ConfirmOrder")]
+        public string ConfirmOrder { get; set; }
 
-        public string Town { get; set; }
+        [Display(Name = "Showcart")]
+        public string Showcart { get; set; }
 
-        public decimal Age { get; set; }
+        [Display(Name = "Searchinput")]
+        public string Searchinput { get; set; }
+
+        [Display(Name = "Clearcart")]
+        public string Clearcart { get; set; }
     }
 }

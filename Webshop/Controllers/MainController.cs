@@ -23,7 +23,7 @@ namespace Webshop.Controllers
             CustomerOverview cu = new CustomerOverview();
             object type_user = cu.GetCurrentUser(model.username, model.password);
 
-            if (type_user is Customer)
+            if (type_user is Fun_Killerapp_S2.Object.Customer)
             {
                 Session["CurrentCustomer"] = type_user;
                 return RedirectToAction("CustomerMain", "Customer");

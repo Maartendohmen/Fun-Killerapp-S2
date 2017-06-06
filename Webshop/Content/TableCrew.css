@@ -12,7 +12,7 @@ thead th {
 
 tbody {
     overflow-y: auto;
-    height: 520px;
+    height: 250px;
 }
 
 tbody td, thead th {
@@ -26,4 +26,3 @@ tr:after {
     display: block;
     visibility: hidden;
 }
-    

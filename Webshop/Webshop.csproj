@@ -126,9 +126,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\CustomerModel.cs" />
+    <Compile Include="Models\CrewModel.cs" />
+    <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\LoginModel.cs" />
-    <Compile Include="Models\ProductOrderModel.cs" />
+    <Compile Include="Models\Customermodel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +137,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Customer.css" />
     <Content Include="Content\Table.css" />
+    <Content Include="Content\TableCrew.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

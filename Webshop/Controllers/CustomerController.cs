@@ -13,7 +13,7 @@ namespace Webshop.Controllers
     {
         private static List<Product> shopcart = new List<Product>();
         private static CustomerOverview cu = new CustomerOverview();
-        private static Customer current;
+        private static Fun_Killerapp_S2.Object.Customer current;
         private static decimal totalprice = 0;
         private static bool showcart = false;
 
@@ -22,7 +22,7 @@ namespace Webshop.Controllers
         public ActionResult CustomerMain()
         {
             //CurrentCustomer
-            current = (Customer)Session["CurrentCustomer"];
+            current = (Fun_Killerapp_S2.Object.Customer)Session["CurrentCustomer"];
             ViewData["CurrenCustomer"] = current;
 
             //CurrentProducts
@@ -41,7 +41,7 @@ namespace Webshop.Controllers
         }
 
         [HttpPost]
-        public ActionResult CustomerMain(ProductOrderModel model)
+        public ActionResult CustomerMain(Customermodel model)
         {
             //add product to cart
             if (model.ProductNameInput != null)
@@ -62,6 +62,7 @@ namespace Webshop.Controllers
             {
                 cu.placeorder(shopcart, current.CustomerID);
                 showcart = false;
+                shopcart.Clear();
             }
             //Showcart
             else if (model.Showcart != null)
