@@ -70,6 +70,10 @@ namespace Fun_Killerapp_S2
             customeroverview.placeorder(shopcart, currentcustomer.CustomerID);
             Productsgridview.Rows.Clear();
             Showproducts(customeroverview.GetAllProducts());
+            if (shopcart.Count == 3)
+            {
+                MessageBox.Show("You've got a 10 precent discount!");
+            }
         }
 
         private void btnShowcart_Click(object sender, EventArgs e)

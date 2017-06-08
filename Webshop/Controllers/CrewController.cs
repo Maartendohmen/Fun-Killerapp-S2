@@ -13,6 +13,7 @@ namespace Webshop.Controllers
     {
         private static Crew current;
         private static CrewOverview co = new CrewOverview();
+        private static List<Product> Discountproducts = new List<Product>();
         // GET: Crew
         public ActionResult CrewMain()
         {
@@ -44,9 +45,18 @@ namespace Webshop.Controllers
                 Order specificorder = co.GetOneOrder(model.OrderInput);
                 ViewBag.Oneorder = specificorder.Products;
             }
-
-
-
+            if (model.ProductIDInput != 0)
+            {
+                Discountproducts.Add(co.GetOneProduct(model.ProductIDInput));
+            }
+            if (model.Amount != 0 && model.Comment != null && model.Time != null)
+            {
+                co.SaveDiscounts(model.Amount, model.Time, model.Comment, Discountproducts);
+            }
+            if (model.Discountid != 0)
+            {
+                co.DeleteDiscount(model.Discountid);
+            }
             return View(CrewMain());
         }
     }

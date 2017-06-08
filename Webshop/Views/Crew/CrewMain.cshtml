@@ -8,6 +8,15 @@
 }
 
 <link type="text/css" href="~/Content/TableCrew.css" rel="stylesheet" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+</script>
 
 <div class="row">
 <div class="col-md-3 col-md-offset-9">
@@ -31,10 +40,11 @@
                 @foreach (var discount in ViewBag.Alldiscounts)
                 {
                 <tr>
-                    <td>discount.DiscountID</td>
-                    <td>discount.Amount</td>
-                    <td>discount.Date</td>
-                    <td>discount.Comment</td>
+                    <td>@discount.DiscountID</td>
+                    <td>@discount.Amount</td>
+                    <td>@discount.Date</td>
+                    <td>@discount.Comment</td>
+                    <td><form method="post"><button type="submit" class="btn btn-primary" value="@discount.DiscountID" name="Discountid">Delete</button></form></td>
                 </tr>
                 }
             </tbody>
@@ -42,7 +52,7 @@
         </table>
 </div>
 
-        <div class="col-md-7">
+        <div class="col-md-6">
             <table class="table">
                 <thead>
                     <tr>
@@ -70,7 +80,7 @@
                             <td>@product.Categorie</td>
                             <td>@product.Amount</td>
                             <td>-@totaalafprijs %</td>
-                            <td><form method="post"><button type="submit" class="btn btn-primary" value="@product.Name" name="ProductNameInput">Discount</button></form></td>
+                            <td><form method="post"><button type="submit" class="btn btn-primary" value="@product.ProductID" name="ProductIDInput">Discount</button></form></td>
                         </tr>
                     }
                 </tbody>
@@ -80,8 +90,70 @@
     </div>
 
 
+
+
+<div id="myModal" class="modal fade" role="form">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Make Discount</h4>
+            </div>
+            <div class="modal-body">
+                <form method="post">
+                    <fieldset>
+                        <label for="Comment">Comment</label>
+                        <input type="text" name="Comment" />
+                        <br />
+                        <br />
+                        <label for="Amount">Amount (%)</label>
+                        <input type="text" name="Amount" />
+                        <br />
+                        <br />
+                        <!--Datetime picker-->
+                        <label for="Time">Until</label>
+                        <input type="text" id="datepicker" name="Time">
+                        <br />
+                        <br />
+                    </fieldset>
+
+                    <button type="submit" class="btn btn-success">Confirm</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                </form>
+
+            </div>
+            </div>
+        </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-5">
 
         <table class="table">
             <thead>
@@ -138,9 +210,10 @@
                 }
             </tbody>
             }
-
         </table>
-
+    </div>
+    <div class="col-md-1">
+        <button class="btn btn-info" data-toggle="modal" data-target="#myModal">Add Discount</button>
     </div>
 
 </div>

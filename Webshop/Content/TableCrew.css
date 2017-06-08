@@ -1,4 +1,11 @@
-﻿table {
+﻿@media(max-width: 1600px)
+{
+    .container {
+        max-width: 1520px;
+    }
+}
+
+table {
     width: 50%;
 }
 
