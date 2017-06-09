@@ -9,6 +9,17 @@ namespace Fun_Killerapp_S2.DAL
 {
     abstract class Connectionstring
     {
-       public SqlConnection conn = new SqlConnection(@"Data Source=MAARTEN-PC\SQLEXPRESS;Initial Catalog=Webshop;Integrated Security=True");
+       public SqlConnection conn = new SqlConnection(@"
+            Data Source=ianketje.com;
+            Integrated Security=False;
+            User ID=sa;
+            Password=7CbGNB#Xtq#TKSw!;
+            Connect Timeout=15;
+            Encrypt=False;
+            Database=Webshop;
+            TrustServerCertificate=True;
+            ApplicationIntent=ReadWrite;
+            MultiSubnetFailover=False;
+            MultipleActiveResultSets=true");
     }
 }
