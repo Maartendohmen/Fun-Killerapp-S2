@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Webshop.Models
 {
-    public class Customermodel
+    public class CustomerModel
     {
         [Required]
         [Display(Name = "ProductNameInput")]

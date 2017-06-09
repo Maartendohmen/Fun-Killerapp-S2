@@ -22,20 +22,23 @@ namespace Webshop.Controllers
         {
             CustomerOverview cu = new CustomerOverview();
             object type_user = cu.GetCurrentUser(model.username, model.password);
+            bool allow = true;
 
             if (type_user is Fun_Killerapp_S2.Object.Customer)
             {
                 Session["CurrentCustomer"] = type_user;
+                Session["Allow"] = allow;
                 return RedirectToAction("CustomerMain", "Customer");
             }
             else if (type_user is Crew)
             {
                 Session["CurrentCrew"] = type_user;
+                Session["Allow"] = allow;
                 return RedirectToAction("CrewMain", "Crew");
             }
             else
             {
-                ViewBag.error = "Foute aanmelding";
+                Session["error"] = "Foute aanmelding";
                 return View();
             }
         }

@@ -17,23 +17,29 @@ namespace Webshop.Controllers
         // GET: Crew
         public ActionResult CrewMain()
         {
-            //currentcrewmember
-            current = (Crew)Session["CurrentCrew"];
-            ViewData["CurrentCrew"] = current;
+            if (Session["Allow"] == null)
+            {
+                Session["error"] = "Om deze pagina te betreden moet je aangemeld zijn";
+                return RedirectToAction("Index", "Main");
+            }
+            else
+            {
 
-            //Alldiscounts
-            List<Discount> alldiscounts = co.GetAllDiscounts();
-            ViewBag.Alldiscounts = alldiscounts;
+                //currentcrewmember
+                current = (Crew)Session["CurrentCrew"];
+                ViewData["CurrentCrew"] = current;
 
-            //allproducts
-            List<Product> allproducts = co.GetAllProducts();
-            ViewBag.Allproducts = allproducts;
+                //Alldiscounts
+                ViewBag.Alldiscounts = co.GetAllDiscounts();
 
-            //allorders
-            List<Order> allorders = co.GetAllOrders();
-            ViewBag.Allorders = allorders;
+                //allproducts
+                ViewBag.Allproducts = co.GetAllProducts();
 
-            return View();
+                //allorders
+                ViewBag.Allorders = co.GetAllOrders(); 
+
+                return View();
+            }
         }
 
         [HttpPost]

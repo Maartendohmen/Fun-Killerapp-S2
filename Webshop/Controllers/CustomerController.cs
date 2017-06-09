@@ -21,17 +21,22 @@ namespace Webshop.Controllers
         // GET: Customer
         public ActionResult CustomerMain()
         {
+
+            if (Session["Allow"] == null)
+            {
+                Session["error"] = "Om deze pagina te betreden moet je aangemeld zijn";
+                return RedirectToAction("Index", "Main");
+            }
+
             //CurrentCustomer
             current = (Fun_Killerapp_S2.Object.Customer)Session["CurrentCustomer"];
             ViewData["CurrenCustomer"] = current;
 
             //CurrentProducts
-            List<Product> getallproducts = cu.GetAllProducts();
-            ViewBag.allproducts = getallproducts;
+            ViewBag.allproducts = cu.GetAllProducts();
 
             //productsincart
-            List<Product> cartproducts = shopcart;
-            ViewBag.cartproducts = cartproducts;
+            ViewBag.cartproducts = shopcart;
 
             //showcart
             ViewBag.showcart = showcart;
@@ -41,7 +46,7 @@ namespace Webshop.Controllers
         }
 
         [HttpPost]
-        public ActionResult CustomerMain(Customermodel model)
+        public ActionResult CustomerMain(CustomerModel model)
         {
             //add product to cart
             if (model.ProductNameInput != null)
