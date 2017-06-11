@@ -24,7 +24,6 @@ namespace Webshop.Controllers
             }
             else
             {
-
                 //currentcrewmember
                 current = (Crew)Session["CurrentCrew"];
                 ViewData["CurrentCrew"] = current;

@@ -9,8 +9,8 @@ namespace Webshop.Models
     {
         public static List<Customers2> Allcustomers = new List<Customers2>()
         {
-            new Customers2(-1,"Henk","Heel",10),
-            new Customers2(-1,"Sjaak","Kal",-5),
+            new Customers2(80,"Henk","Heel",10),
+            new Customers2(81,"Sjaak","Kal",-5),
         };
 
         public int Customerid;
